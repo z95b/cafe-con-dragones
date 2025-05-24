@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D&D Menu</title>
+    <title>MENU - CAFÉ CON DRAGONES </title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Spectral:wght@400;600&display=swap"
         rel="stylesheet">
+        //ICONO
+    <link rel="icon" href="ico.ico" type="image/png">
 
     <style>
         /* Global Styles */
@@ -84,11 +86,12 @@
 
         h1 {
             font-family: 'MedievalSharp', cursive;
-            font-size: 3.5rem;
+            font-size: 5rem;
             color: var(--light-text);
             margin-bottom: 0.2em;
             letter-spacing: 2px;
-
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
         }
 
         .subtitle {
@@ -230,9 +233,10 @@
         /* Footer */
         footer {
             text-align: center;
-            padding: 20px 0;
+            padding: 10px 0;
             color: var(--light-text);
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
         /* Loading Indicator */
@@ -359,7 +363,7 @@
  */
         (function () {
             const carouselContainer = document.querySelector('.background-carousel');
-            const TOTAL_IMAGES = 10;
+            const TOTAL_IMAGES = 6;
             const TRANSITION_DELAY = 5000; // Time between image changes (5 seconds)
             let currentImageIndex = 0;
             let images = [];
