@@ -1,0 +1,32 @@
+{
+    "raceName": "Goblins Despiertos",
+    "raceDescription": "En la naturaleza, los goblins carecen de una inteligencia realmente desarrollada, no comprenden algo más allá de su tribu y sus costumbres, su idioma y su forma de vida. Sin embargo, en muy escasas ocasiones, algunos goblins nacen con la suficiente inteligencia como para aprender muchas cosas y vivir en una sociedad más compleja. Solo 5 de cada 100 goblins resultan ser 'Sociables'. Además, debido a su curiosa genética, las goblins hembras son muy escasas: solo 2 de cada 100 goblins son hembras, lo que naturalmente convierte a una goblin inteligente en algo tan escaso como curioso.",
+    "bonusRules": "",
+    "movementSpeed": "7",
+    "lifeSpan": "30-50",
+    "attributes": {
+        "Destreza": "+2",
+        "Sabiduría": "+1"
+    },
+    "sizes": [
+        2
+    ],
+    "abilities": [
+        {
+            "name": "Visión en la Oscuridad",
+            "description": "Puedes ver en la oscuridad hasta 60 pies como si fuera luz tenue."
+        },
+        {
+            "name": "Escape de Granuja",
+            "description": "Puedes usar 'Destrabarse' o 'Esconderse' como acción adicional."
+        },
+        {
+            "name": "Golpe en la Espinilla",
+            "description": "Añades tu modificador de Competencia a todo el daño que inflijas a una criatura de un tamaño mayor al tuyo."
+        },
+        {
+            "name": "Atracción por Necesidad",
+            "description": "Tienes ventaja en cualquier interacción no agresiva con otros Goblins siempre y cuando seas hembra."
+        }
+    ]
+}

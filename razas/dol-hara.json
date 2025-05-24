@@ -1,0 +1,27 @@
+{
+    "raceName": "Dol-Haras",
+    "raceDescription": "Los Dol-Haras, conocidos como 'Varias Vidas' en su lengua natal, son una raza única marcada por su apariencia imponente y sus cuatro brazos. Su cultura gira en torno a la simbología de sus extremidades: los brazos superiores representan a los padres, mientras que los inferiores simbolizan a los hijos. Cada brazo es considerado un miembro independiente y se decora con anillos u ornamentos que cuentan historias de su linaje y sus conexiones. En la muerte, los Dol-Haras más cercanos al difunto se colocan un anillo en una mano para honrar su memoria. Esta tradición, junto con su impresionante destreza física, hace de los Dol-Haras una raza tan fascinante como temida.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "attributes": {
+        "Fuerza": "+2",
+        "Constitución": "+1"
+    },
+    "sizes": [
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Manos Útiles",
+            "description": "Gracias a tus cuatro brazos, puedes embrazar un escudo mientras usas un arma a dos manos. También puedes empuñar simultáneamente un arma a dos manos y otra de una mano, demostrando tu extraordinaria destreza y fuerza."
+        },
+        {
+            "name": "Agarre Férreo",
+            "description": "Obtienes triple ventaja (3d20) en pruebas de Atletismo relacionadas con agarrar objetivos, objetos grandes o cualquier cosa que requiera una fuerza y coordinación superiores."
+        },
+        {
+            "name": "Protección",
+            "description": "Como reacción, puedes cruzar tus brazos para reducir en un 50% el daño no mágico de un ataque. Si llevas un escudo, puedes anular el daño por completo, pero debes declarar la reacción antes de saber si el ataque impacta o no."
+        }
+    ]
+}

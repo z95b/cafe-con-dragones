@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D 5E - Clases</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap">
+    <style>
+        :root {
+            --primary: #7e22ce;
+            --secondary: #4c1d95;
+            --background: #0f172a;
+            --text: #e2e8f0;
+            --accent: #c026d3;
+            --content-bg: rgba(30, 41, 59, 0.9);
+            --border: #6b21a8;
+            --glow: #c026d3;
+            --school-knowledge: #3b82f6;
+            --school-valor: #ef4444;
+            --school-comfort: #22c55e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 18px;
+            min-height: 100vh;
+            background-image: 
+                url('https://images.unsplash.com/photo-1605806616949-1fe88c133450?auto=format&fit=crop&w=1920&q=80'),
+                radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 100% 0%, rgba(192, 38, 211, 0.2) 0%, transparent 50%);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(76, 29, 149, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            z-index: 10;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .schools-nav {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .school-button {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(30, 41, 59, 0.9);
+            color: white;
+            border: 2px solid var(--border);
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            font-family: 'IM Fell English SC', serif;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            min-width: 250px;
+            text-align: left;
+        }
+
+        .school-button.knowledge {
+            border-color: var(--school-knowledge);
+        }
+
+        .school-button.valor {
+            border-color: var(--school-valor);
+        }
+
+        .school-button.comfort {
+            border-color: var(--school-comfort);
+        }
+
+        .school-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px var(--glow);
+        }
+
+        .school-button.knowledge:hover {
+            box-shadow: 0 0 20px var(--school-knowledge);
+        }
+
+        .school-button.valor:hover {
+            box-shadow: 0 0 20px var(--school-valor);
+        }
+
+        .school-button.comfort:hover {
+            box-shadow: 0 0 20px var(--school-comfort);
+        }
+
+        .school-icon {
+            font-size: 1.5rem;
+            min-width: 1.5rem;
+            text-align: center;
+        }
+
+        .school-info {
+            flex: 1;
+        }
+
+        .school-name {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .school-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .content {
+            background: var(--content-bg);
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.2);
+            border: 2px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            animation: contentFadeIn 0.5s ease-out;
+        }
+
+        .header-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            border: 2px solid var(--border);
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.2);
+        }
+
+        @keyframes contentFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Resto de estilos previos... */
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .school-button {
+                width: 100%;
+            }
+
+            .header-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="schools-nav">
+                <button class="school-button knowledge" onclick="filterBySchool('conocimiento')">
+                    <span class="school-icon">📚</span>
+                    <div class="school-info">
+                        <div class="school-name">Escuela del Conocimiento</div>
+                        <div class="school-desc">Maestros del saber y la erudición</div>
+                    </div>
+                </button>
+                <button class="school-button valor" onclick="filterBySchool('valor')">
+                    <span class="school-icon">⚔️</span>
+                    <div class="school-info">
+                        <div class="school-name">Escuela del Valor</div>
+                        <div class="school-desc">Guerreros y bardos de batalla</div>
+                    </div>
+                </button>
+                <button class="school-button comfort" onclick="filterBySchool('consuelo')">
+                    <span class="school-icon">💝</span>
+                    <div class="school-info">
+                        <div class="school-name">Escuela del Consuelo</div>
+                        <div class="school-desc">Sanadores y protectores</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <main class="content" id="content">
+            <!-- Contenido del markdown -->
+        </main>
+    </div>
+
+    <script>
+        let currentContent = '';
+
+        async function loadMarkdown() {
+            try {
+                const response = await fetch('content.md');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const text = await response.text();
+                currentContent = text;
+                processMarkdown(text);
+            } catch (error) {
+                console.error('Error cargando el markdown:', error);
+                document.getElementById('content').innerHTML = `
+                    <h1>Error al cargar el contenido</h1>
+                    <p>No se pudo cargar el archivo markdown. Por favor, verifica que el archivo exista y sea accesible.</p>
+                `;
+            }
+        }
+
+        function filterBySchool(school) {
+            const schoolContent = extractSchoolContent(currentContent, school);
+            showContent(formatSection(schoolContent));
+        }
+
+        function extractSchoolContent(text, school) {
+            const sections = text.split(/(?=^# )/m).filter(section => section.trim());
+            let content = '';
+
+            // Añadir la sección principal del Bardo
+            const mainSection = sections.find(section => section.includes('# Bardo'));
+            if (mainSection) {
+                content += mainSection;
+            }
+
+            // Buscar y añadir contenido específico de la escuela
+            const schoolRegex = new RegExp(`Escuela del ${school}`, 'i');
+            sections.forEach(section => {
+                if (schoolRegex.test(section)) {
+                    content += '\n\n' + section;
+                }
+            });
+
+            return content;
+        }
+
+        function processMarkdown(text) {
+            const sections = text.split(/(?=^# )/m).filter(section => section.trim());
+            
+            // Mostrar la primera sección por defecto
+            if (sections.length > 0) {
+                const titleMatch = sections[0].match(/^# ([^\n]+)/);
+                if (titleMatch) {
+                    showContent(formatSection(sections[0]));
+                }
+            }
+        }
+
+        function formatSection(section) {
+            // Añadir imagen de cabecera según el contenido
+            let headerImage = '';
+            if (section.includes('Escuela del Conocimiento')) {
+                headerImage = 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1920&q=80';
+            } else if (section.includes('Escuela del Valor')) {
+                headerImage = 'https://images.unsplash.com/photo-1615671524827-c1fe3973b824?auto=format&fit=crop&w=1920&q=80';
+            } else if (section.includes('Escuela del Consuelo')) {
+                headerImage = 'https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&w=1920&q=80';
+            } else {
+                headerImage = 'https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?auto=format&fit=crop&w=1920&q=80';
+            }
+
+            let formattedContent = `<img src="${headerImage}" alt="Header Image" class="header-image">`;
+            
+            formattedContent += section
+                // Títulos
+                .replace(/^# (.*$)/gm, '<h1>$1</h1>')
+                .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+                .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+                .replace(/^#### (.*$)/gm, '<h4>$1</h4>')
+                .replace(/^##### (.*$)/gm, '<h5>$1</h5>')
+                
+                // Listas
+                .replace(/^\s*[-*]\s+(.*)$/gm, '<li>$1</li>')
+                .replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
+                
+                // Énfasis
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                
+                // Secciones especiales con clases
+                .replace(/<h2>Características Base<\/h2>[\s\S]*?(?=<h2>|$)/,
+                    match => `<div class="caracteristicas">${match}</div>`)
+                .replace(/<h3>Nivel \d+<\/h3>[\s\S]*?(?=<h3>|<h2>|$)/g,
+                    match => `<div class="nivel">${match}</div>`)
+                .replace(/<h5>Escuela[^<]*<\/h5>[\s\S]*?(?=<h5>|<h4>|<h3>|<h2>|$)/g,
+                    match => `<div class="escuela">${match}</div>`)
+                
+                // Párrafos
+                .replace(/^([^<].*)/gm, '<p>$1</p>')
+                
+                // Limpiar líneas vacías extra
+                .replace(/^\s*[\r\n]/gm, '');
+
+            return formattedContent;
+        }
+
+        function showContent(html) {
+            const content = document.getElementById('content');
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                content.innerHTML = html;
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 200);
+        }
+
+        // Iniciar la carga
+        document.addEventListener('DOMContentLoaded', loadMarkdown);
+    </script>
+</body>
+</html>

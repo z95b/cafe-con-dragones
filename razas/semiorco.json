@@ -1,0 +1,29 @@
+{
+    "raceName": "Semiorcos",
+    "raceDescription": "Temibles en combate, los semiorcos combinan la astucia de los humanos con la brutalidad de los orcos. Su presencia se hace denotar allá donde vayan, su caminar amenazante por naturaleza puede achantar hasta a los más valientes, y siempre que pelees contra uno sabrás que el combate será complicado. Debido a esto, no son muy bien vistos.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "lifeSpan": "60-80",
+    "attributes": {
+        "Fuerza": "+2",
+        "Destreza": "+1"
+    },
+    "sizes": [
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Ira Interior",
+            "description": "Obtienes una carga de Furia (ver Bárbaro). Se recupera con 1 Descanso Corto."
+        },
+        {
+            "name": "Grito de Guerra",
+            "description": "Como acción adicional puedes envalentonarte a ti mismo o a un aliado para que ataque con más fiereza. Añade tu Modificador de Fuerza al próximo ataque como daño."
+        },
+        {
+            "name": "Estandarte Viviente",
+            "description": "Si un enemigo ataca a un aliado estando a 1 casilla de ti, puedes emplear tu Reacción para atacar con tu arma."
+        }
+    ]
+}

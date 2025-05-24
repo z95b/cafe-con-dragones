@@ -1,0 +1,24 @@
+{
+    "raceName": "Githyanki",
+    "raceDescription": "Los Githyanki son famosos guerreros y brillantes soldados que, hace miles de años, escaparon del control de los Ilícidos. Como resultado de los experimentos realizados en ellos, son inmunes al control mental y a magias telepáticas. No hay militares más disciplinados que los Githyanki.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "lifeSpan": "100-200",
+    "attributes": {
+        "Fuerza": "+2",
+        "Inteligencia": "+1"
+    },
+    "sizes": [
+        3
+    ],
+    "abilities": [
+        {
+            "name": "Biblioteca del Conocimiento",
+            "description": "Una vez por descanso largo, puedes elegir una habilidad en la que volverte experto (doble competencia) durante 24 horas."
+        },
+        {
+            "name": "Mano Psiónica",
+            "description": "Obtienes el truco 'Mano de Mago', pero esta es invisible."
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "raceName": "Locathah",
+    "raceDescription": "Los Locathah son seres marinos que tardaron mucho en relacionarse con las demás especies debido a la diferencia de clima. Aunque suelen ser algo extraños por esta falta de costumbre, sus excepcionales habilidades en combate seguro que los convierten en valiosos compañeros.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "lifeSpan": "70-120",
+    "attributes": {
+        "Fuerza": "+2",
+        "Destreza": "+1"
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "En Terreno Conocido",
+            "description": "Moverse en terreno difícil acuoso te otorga 2 casillas adicionales de movimiento."
+        },
+        {
+            "name": "Como en Casa",
+            "description": "Si realizas un descanso corto en el agua, te curas el doble de puntos de vida."
+        },
+        {
+            "name": "Zambullirse",
+            "description": "Puedes teletransportarte entre charcos cercanos a voluntad usando tu acción adicional. También puedes arrastrar objetivos a través de los charcos."
+        }
+    ]
+}

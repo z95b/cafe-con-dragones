@@ -1,0 +1,29 @@
+{
+    "raceName": "Lizerin",
+    "raceDescription": "Algunos sabios creen que los Lizardfolk son parientes lejanos de los dragonborn y kobolds, pero han habitado el Plano Material desde su creación como una raza única. Dotados de defensas físicas notables y una conexión mística con la naturaleza, los hombres lagarto prosperan en condiciones que serían mortales para otros, lo que alimenta mitos sobre su propósito divino como guardianes de las maravillas naturales.",
+    "bonusRules": "+2 en Constitución, +1 en Fuerza.",
+    "movementSpeed": "7",
+    "attributes": {
+        "Fuerza": "+1",
+        "Constitución": "+2"
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Instinto Primitivo",
+            "description": "Puedes crear armas o herramientas simples usando materiales básicos como huesos, piedras o ramas. Esta habilidad refleja tu capacidad innata para adaptarte a cualquier entorno."
+        },
+        {
+            "name": "Sangre Venenosa",
+            "description": "Tu sangre está impregnada de toxinas naturales. Eres inmune al daño de veneno y, si recibes este tipo de daño, te curas un 50% de lo recibido."
+        },
+        {
+            "name": "Instinto Salvaje",
+            "description": "Eres competente en Percepción para detectar peligros ocultos. Si ya eres competente, tienes ventaja al buscar amenazas."
+        }
+    ]
+}

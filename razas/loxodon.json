@@ -1,0 +1,34 @@
+{
+    "raceName": "Loxodon",
+    "raceDescription": "Los Loxodon, a pesar de ser grandes y fuertes, se han enfocado en el conocimiento y el estudio de las ciencias. Sin embargo, su fuerza y su pasado como guerreros les permiten partir a sus enemigos en dos si es necesario. Son conocidos por su paciencia y empatía, aunque también por su comportamiento errático y poco predecible.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "lifeSpan": "120-200",
+    "attributes": {
+        "Constitución": "+2",
+        "Sabiduría": "+1"
+    },
+    "sizes": [
+        3,
+        4,
+        5
+    ],
+    "abilities": [
+        {
+            "name": "Piel Dura",
+            "description": "Tu CA sin armadura es 12 + Modificador de Constitución. Puedes usar esta CA sin armadura incluso si llevas puesta una armadura que te proporcione una menor CA."
+        },
+        {
+            "name": "Tamaño Considerable",
+            "description": "Eres considerado Grande para efectos de tu capacidad de carga y cuando determines si puedes empujar, arrastrar o cargar algo. También se considera que ocupas un espacio mayor a efectos de combate."
+        },
+        {
+            "name": "Furia Primal",
+            "description": "Obtienes una carga de Furia Primitiva. Al consumirla, puedes intercambiar temporalmente tu característica más alta por Fuerza (por ejemplo, si tienes 20 de Inteligencia, pasas a tener 20 de Fuerza). Tu trompa se endurece y cuenta como un arma contundente (2d6 + Modificador de Fuerza)."
+        },
+        {
+            "name": "Segundo Ataque con Furia",
+            "description": "A nivel 5, mientras dure tu Furia Primal, puedes realizar un segundo ataque en tu turno. La Furia dura 5 turnos (medio minuto)."
+        }
+    ]
+}

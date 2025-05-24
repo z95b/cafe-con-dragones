@@ -1,0 +1,24 @@
+{
+    "raceName": "Druegar",
+    "raceDescription": "Los Druegar son enanos oscuros que habitan en las profundidades del Underdark. Son conocidos por su fuerza física y su astucia, así como por sus habilidades mágicas y su capacidad para modificar su tamaño y volverse invisibles temporalmente.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "lifeSpan": "400-500",
+    "attributes": {
+        "Fuerza": "+2",
+        "Inteligencia": "+1"
+    },
+    "sizes": [
+        3
+    ],
+    "abilities": [
+        {
+            "name": "Modificación Corporal",
+            "description": "Una vez por descanso corto, puedes reducir o aumentar tu tamaño. Al reducir tu tamaño, obtienes ventaja en tiradas de Destreza. Al aumentar tu tamaño, obtienes ventaja en tiradas de Fuerza."
+        },
+        {
+            "name": "Invisibilidad",
+            "description": "Una vez por descanso corto, puedes volverte invisible durante 10 minutos. La invisibilidad se cancela por las mismas razones que una invisibilidad normal."
+        }
+    ]
+}

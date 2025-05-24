@@ -1,0 +1,31 @@
+{
+    "raceName": "Efteros",
+    "raceDescription": "Los Éfteros son humanoides aviares que incluyen a una gran variedad de pájaros, desde majestuosos halcones hasta gallinas. Su naturaleza les otorga habilidades únicas relacionadas con su plumaje y su estilo de vida ágil y práctico.",
+    "bonusRules": "+1 en Inteligencia, +1 en Destreza, +1 en Sabiduría.",
+    "movementSpeed": "6",
+    "lifeSpan": "60-100",
+    "attributes": {
+        "Destreza": "+1",
+        "Inteligencia": "+1",
+        "Sabiduría": "+1"
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Morador del Cielo",
+            "description": "Como Acción Adicional puedes desplegar tus alas para volar. Recibir un crítico o quedar paralizado a mitad de vuelo te derribará."
+        },
+        {
+            "name": "Plumaje",
+            "description": "Tienes resistencia al daño de frío y ventaja en tiradas de salvación para evitar quedar cubierto de sustancias como grasa, aceite o agua."
+        },
+        {
+            "name": "Picotazo",
+            "description": "Puedes usar tu pico para realizar un ataque desarmado. Se considera daño perforante y su probabilidad de crítico baja a 19. (1d6 + Modificador de ataque)."
+        }
+    ]
+}

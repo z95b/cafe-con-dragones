@@ -1,0 +1,39 @@
+{
+    "raceName": "Yuan-Ti",
+    "raceDescription": "Los Yuan-Ti son los primos humanoides de las Lamias, conservando sus instintos reptilianos y la capacidad de causar gran daño con su veneno. Se enfocan en el estudio, la meditación, la medicina y el combate disciplinado. Valoran profundamente sus crestas, que consideran un símbolo de belleza, tradición y estatus. Son devotos de la religión, la tradición y el estudio filosófico, disfrutando especialmente de conversaciones intelectuales.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "lifeSpan": "80-120",
+    "attributes": {
+        "Fuerza": "+2",
+        "Inteligencia": "+1"
+    },
+    "sizes": [
+        2,
+        3
+    ],
+    "abilities": [
+        {
+            "name": "Intimidación Animal",
+            "description": "Todo ser vivo no inteligente (5 de Inteligencia o menos) puede ser intimidado y no te atacará, siempre que no sea más grande que tú. Si la tirada de Intimidación es superior a 15, huirá aunque eso implique recibir un golpe de oportunidad."
+        },
+        {
+            "name": "Inmunidad a Venenos",
+            "description": "Eres completamente inmune al daño por veneno y a las condiciones relacionadas con venenos."
+        },
+        {
+            "name": "Mordisco de Acero",
+            "description": "Puedes imbuir tus armas y las de tus compañeros con tu veneno usando tu acción adicional o reacción. El daño extra depende de tu nivel:\n- Nivel 1-5: 1d4\n- Nivel 6-11: 1d6\n- Nivel 12-17: 1d8\n- Nivel 18-20: 1d10"
+        }
+    ],
+    "subtypes": [
+        {
+            "name": "Purasangre",
+            "description": "Los Yuan-Ti con cresta, considerados más bellos y respetados dentro de su cultura."
+        },
+        {
+            "name": "Sangre Sucia",
+            "description": "Los Yuan-Ti sin cresta, a menudo considerados de menor estatus pero igualmente capaces y disciplinados."
+        }
+    ]
+}

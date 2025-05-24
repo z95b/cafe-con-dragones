@@ -1,0 +1,26 @@
+{
+    "raceName": "Sonares",
+    "raceDescription": "Los Sónares son seres mágicos cuya existencia depende de ser escuchados. Su naturaleza melódica y su vínculo con la música les otorga habilidades únicas para reperesentarse a si mismos y sus emociones.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "lifeSpan": "Inmortales mientras alguien pueda oírles.",
+    "attributes": {
+        "Destreza": "+1",
+        "Carisma": "+2"
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Inspiración",
+            "description": "Al realizar un descanso corto o largo, puedes tocar una melodía relajante. Todo aquel que la escuche gana un dado de Inspiración que aumenta con tu nivel: Nivel 1-5: 1d6, Nivel 6-11: 1d8, Nivel 12-16: 1d10, Nivel 17-20: 1d12. Este dado puede añadirse a cualquier tirada de salvación, característica o ataque. Solo se puede tener una inspiración de este tipo activa al mismo tiempo, pero no interfiere con las inspiraciones bárdicas."
+        },
+        {
+            "name": "Serenata",
+            "description": "Puedes realizar un canto dirigido a un objetivo para efectuar una de las siguientes acciones:\n- Dormir (Salvación de Sabiduría).\n- Encantar Animal (Salvación de Sabiduría).\n- Estabilizar (Un aliado supera las salvaciones de muerte pero queda inmóvil hasta recibir ayuda).\nPuedes usar este rasgo tantas veces como tu modificador de Competencia. Se recupera tras descansos cortos."
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "raceName": "Universitario",
+    "raceDescription": "OMG Gerard Mesquida, que coño es un hígado sano 🗣️🗣️🗣️🔥🔥???????????",
+    "bonusRules": "",
+    "movementSpeed": "Lo que necesite para ir a la cerveza más cercana",
+    "lifeSpan": "23",
+    "attributes": {
+        "Constitución": "+5"
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Infusión Celestial",
+            "description": "Eres resistente al daño Radiante o Necrótico (dependiendo de tu progenitor)."
+        },
+        {
+            "name": "Toque Sanador",
+            "description": "Como acción, puedes curar a una criatura de una enfermedad, veneno o curarle una cantidad de puntos de vida igual a tu nivel x 5. Se recupera tras un descanso corto."
+        }
+    ]
+}

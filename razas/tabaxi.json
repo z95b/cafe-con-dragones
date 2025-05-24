@@ -1,0 +1,34 @@
+{
+    "raceName": "Tabaxis",
+    "raceDescription": "Los Tabaxis son muy comunes tanto en ciudades como en campo abierto. Son seres versátiles, algo caprichosos, pero astutos como ellos solos. Cuidado con sus garras.",
+    "bonusRules": "",
+    "movementSpeed": "7",
+    "lifeSpan": "70-90",
+    "attributes": {
+        "Destreza": "+2",
+        "Inteligencia": "+1"
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Escalada",
+            "description": "Tu agilidad gatuna te permite llegar a lugares normalmente inaccesibles por altura."
+        },
+        {
+            "name": "Ojos de Gato",
+            "description": "Tienes visión en la oscuridad hasta 60 pies como si fuera luz tenue."
+        },
+        {
+            "name": "Garras",
+            "description": "Tus garras pueden usarse como un arma cuerpo a cuerpo. Hacen 1d6 de daño cortante y usan Destreza para atacar. Además, pueden usarse como ganzúas, pero con mayor dificultad y riesgo de romperse."
+        },
+        {
+            "name": "Competencia Felina",
+            "description": "Obtienes competencia en la habilidad Percepción, específicamente usando el sentido del olfato."
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "raceName": "Insectoides",
+    "raceDescription": "Los Insectoides son una raza versátil y adaptativa, originada en regiones inhóspitas donde su capacidad para sobrevivir supera con creces a muchas otras especies. Sus cuerpos están cubiertos por resistentes caparazones que actúan como una armadura natural, y poseen una eficiencia metabólica que les permite prosperar con recursos limitados. Aunque sus sociedades tienden a ser comunales, su sentido de individualidad no se pierde, mostrando una mezcla única de colaboración y autoconservación. Vistos como pragmáticos y resilientes, los Insectoides han aprendido a prosperar donde otros perecen.",
+    "bonusRules": "+2 en Sabiduría, +1 en Constitución.",
+    "movementSpeed": "6",
+    "attributes": {
+        "Constitución": "+1",
+        "Sabiduría": "+2"
+    },
+    "sizes": [
+        1,
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Coraza",
+            "description": "Tu armadura natural es lo suficientemente dura como para que te proteja de ciertos ataques. Tu CA es 13 + Destreza."
+        },
+        {
+            "name": "Alimento escaso",
+            "description": "Solo consumes la mitad de la comida que una persona normal necesita al día (0,5 raciones). Además, la calidad de la comida no te afecta, ya sea basura o un plato gourmet."
+        },
+        {
+            "name": "Multitud",
+            "description": "Tienes +4 en Salvadas contra ser Asustado si estás acompañado de al menos 3 individuos."
+        }
+    ]
+}

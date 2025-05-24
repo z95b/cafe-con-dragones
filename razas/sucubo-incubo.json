@@ -1,0 +1,26 @@
+{
+    "raceName": "Súcubo / Íncubo",
+    "raceDescription": "Los súcubos/íncubos son la raza más común en prostíbulos. Son seres diseñados para el placer y la procreación, con cuerpos adaptados para maximizar el éxtasis. Solo pueden quedar embarazados o embarazar una vez se han enamorado y marcado a una pareja con total confianza, en un acto puro de amor y entrega. Este vínculo otorga poder sobre su pareja y refuerza la conexión entre ambos.",
+    "bonusRules": "",
+    "movementSpeed": "7",
+    "lifeSpan": "Indefinida",
+    "attributes": {
+        "Destreza": "+1",
+        "Carisma": "+2"
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Aroma de Lujuria",
+            "description": "De tu cola surge un suave y dulce perfume que encanta a la víctima, atacando su lujuria para conseguir lo que quieras. El objetivo queda hechizado por una hora hasta recibir daño. Debe superar una tirada de salvación de Sabiduría (DC = 8 + Modificador de Competencia + Modificador de Carisma). Puedes usar este rasgo tantas veces como tu Modificador de Carisma."
+        },
+        {
+            "name": "Revolcón",
+            "description": "Besa a la víctima para intoxicarla con tu lujuria, prácticamente obligándola a acostarse contigo. Durante este tiempo, ambos personajes quedan fuera de combate hasta que alguien la golpee. Te curas 1d6 puntos de golpe por ronda. Si consigues un crítico, dejas al objetivo desmayado y te curas 3 puntos de golpe por nivel. Si el enemigo está afectado por 'Aroma de Lujuria', tiene desventaja en la salvación de Sabiduría y te curas 1d10 por ronda. Requiere un descanso largo para usarlo nuevamente."
+        }
+    ]
+}

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Archivos .MD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4a90e2;
+            --secondary: #6c5ce7;
+            --accent: #00b894;
+            --background: #f8f9fa;
+            --surface: #ffffff;
+            --text: #2d3436;
+            --text-light: #636e72;
+            --border: #dfe6e9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        nav {
+            width: 280px;
+            background-color: var(--surface);
+            padding: 2rem;
+            border-right: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        nav h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0.75rem 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            padding: 0.75rem 1rem;
+            display: block;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--background);
+            color: var(--primary);
+        }
+
+        .content {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        #fileTitle {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .subsection-title {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .subsubsection-title {
+            color: var(--accent);
+            font-size: 1.25rem;
+            margin: 1rem 0;
+            font-weight: 500;
+        }
+
+        .list-item {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text);
+        }
+
+        .list-item::before {
+            content: '•';
+            position: absolute;
+            left: 0.5rem;
+            color: var(--primary);
+        }
+
+        .horizontal-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .horizontal-section>div {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--background);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            opacity: 0.8;
+        }
+
+        .welcome-message {
+            text-align: center;
+            margin-top: 4rem;
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            nav {
+                width: 100%;
+                height: auto;
+                position: static;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <h2>Archivos MD</h2>
+            <ul id="fileList"></ul>
+        </nav>
+        <div class="content">
+            <h1 id="fileTitle">Bienvenido</h1>
+            <div id="fileContent" class="welcome-message">
+                Selecciona un archivo .MD del menú para visualizarlo aquí.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const fileList = document.getElementById('fileList');
+        const fileTitle = document.getElementById('fileTitle');
+        const fileContent = document.getElementById('fileContent');
+
+        const files = [
+            { name: 'Brujo', path: 'clases/brujo.md' }
+        ];
+
+        files.forEach(file => {
+            const li = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = '#';
+            link.textContent = file.name;
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadMarkdown(file.path, file.name);
+            });
+            li.appendChild(link);
+            fileList.appendChild(li);
+        });
+
+        async function loadMarkdown(path, title) {
+            try {
+                const response = await fetch(path);
+                if (!response.ok) {
+                    throw new Error('No se pudo cargar el archivo.');
+                }
+                const text = await response.text();
+                fileTitle.textContent = title;
+                fileContent.className = '';
+                fileContent.innerHTML = parseMarkdown(text);
+
+                const sections = fileContent.querySelectorAll('.section-title');
+                sections.forEach(section => {
+                    const nextElements = [];
+                    let next = section.nextElementSibling;
+
+                    while (next && !next.classList.contains('section-title')) {
+                        nextElements.push(next);
+                        next = next.nextElementSibling;
+                    }
+
+                    if (nextElements.length > 0) {
+                        const wrapper = document.createElement('div');
+                        wrapper.className = 'card';
+                        section.parentNode.insertBefore(wrapper, section);
+                        wrapper.appendChild(section);
+                        nextElements.forEach(el => wrapper.appendChild(el));
+                    }
+                });
+
+                const competencias = Array.from(document.querySelectorAll('h2.subsection-title'))
+                    .find(el => el.textContent.includes('Competencias'));
+
+                if (competencias) {
+                    const competenciasSection = document.createElement('div');
+                    competenciasSection.className = 'horizontal-section';
+
+                    let next = competencias.nextElementSibling;
+                    while (next && !next.classList.contains('subsection-title')) {
+                        competenciasSection.appendChild(next.cloneNode(true));
+                        next = next.nextElementSibling;
+                    }
+
+                    competencias.parentNode.insertBefore(competenciasSection, competencias.nextElementSibling);
+                }
+
+            } catch (error) {
+                fileTitle.textContent = 'Error';
+                fileContent.innerHTML = `<div class="error-message">${error.message}</div>`;
+            }
+        }
+
+        function parseMarkdown(markdown) {
+            return markdown
+                // Headers
+                .replace(/^# (.*$)/gim, '<h1 class="section-title">$1</h1>')
+                .replace(/^## (.*$)/gim, '<h2 class="subsection-title">$1</h2>')
+                .replace(/^### (.*$)/gim, '<h3 class="subsubsection-title">$1</h3>')
+                // Lists
+                .replace(/^- (.*$)/gim, '<div class="list-item">$1</div>')
+                // Bold and Italic
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                // Horizontal Rules
+                .replace(/^---$/gim, '<hr class="divider">');
+        }
+    </script>
+</body>
+
+</html>

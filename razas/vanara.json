@@ -1,0 +1,25 @@
+{
+    "raceName": "Vanaras",
+    "raceDescription": "Los Vanaras son una raza ágil y astuta, conocidos por su facilidad para moverse a través de los entornos más complicados con agilidad prodigiosa. Descendientes y aprendices del legendario Wukong, el Rey Mono, combinan destreza física con habilidades únicas que reflejan su herencia marcial y espiritual.",
+    "bonusRules": "",
+    "movementSpeed": "7",
+    "lifeSpan": "40-80",
+    "attributes": {
+        "Fuerza": "+2",
+        "Sabiduría": "+1"
+    },
+    "sizes": [
+        2,
+        3
+    ],
+    "abilities": [
+        {
+            "name": "Agilidad Prodigiosa",
+            "description": "Tienes competencia en Acrobacias gracias a la gran genética de tu especie, que te permite trepar y balancearte con facilidad. Además, una vez por descanso largo, puedes emplear tu reacción para esquivar automáticamente una Salvada de Destreza. Debes usar esta habilidad antes de lanzar el dado."
+        },
+        {
+            "name": "Toque Paralizante",
+            "description": "Aprendido de los descendientes y alumnos de Wukong, el Rey Mono. Una vez por descanso corto, puedes usar 'Inmovilizar Persona' como acción adicional. Esta inmovilización dura hasta 10 turnos o hasta que el objetivo realice con éxito una Salvada de Sabiduría."
+        }
+    ]
+}

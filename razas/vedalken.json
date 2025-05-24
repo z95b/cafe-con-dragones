@@ -1,0 +1,26 @@
+{
+    "raceName": "Vedalken",
+    "raceDescription": "Grandes pensadores y filósofos prácticos han salido de la raza de los Vedalken. Enfocados en encontrar la lógica allá donde miren y en descubrir todos los secretos que las ciencias puedan otorgar, son ávidos de conocimiento y tienen renombre como grandes profesores y estudiosos reconocidos.",
+    "bonusRules": "Puedes invertir estos valores (+1 INT y +2 WIS)",
+    "movementSpeed": "6",
+    "lifeSpan": "100-150",
+    "attributes": {
+        "Inteligencia": "+2",
+        "Sabiduría": "+1"
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Concentración Arcana",
+            "description": "Puedes estar concentrado hasta en 2 conjuros que requieran concentración al mismo tiempo. Debes realizar una tirada de salvación de Constitución por cada uno de los conjuros activos."
+        },
+        {
+            "name": "Versado en los Estudios",
+            "description": "Tu puntuación máxima para Inteligencia y Sabiduría aumenta de 20 a 24."
+        }
+    ]
+}

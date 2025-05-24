@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipamiento - DyP</title>
+  <style>
+    /* ===== FONTS ===== */
+    @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&family=Orbitron:wght@400;600;900&display=swap');
+
+    /* ===== CUSTOM PROPERTIES ===== */
+    :root {
+      --primary: #00f3ff;
+      --primary-glow: #00c3ff;
+      --secondary: #f700ff;
+      --secondary-glow: #d400ff;
+      --accent: #5b00ff;
+      --accent-glow: #3600ff;
+      --danger: #ff003c;
+      --danger-glow: #ff0055;
+      --success: #00ff8c;
+      --success-glow: #00ff95;
+      --warning: #ffb300;
+      --warning-glow: #ffa200;
+      --dark: #0c0e18;
+      --darker: #070814;
+      --lighter: rgba(255, 255, 255, 0.9);
+      --light: rgba(255, 255, 255, 0.7);
+      --glass: rgba(20, 20, 40, 0.6);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --glass-shine: rgba(255, 255, 255, 0.05);
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--darker);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 8px;
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--secondary);
+      box-shadow: 0 0 10px var(--secondary-glow);
+    }
+
+    /* ===== BASE STYLES ===== */
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+      margin: 0.5em 0;
+    }
+
+    /* ===== PARTICLE BACKGROUND ===== */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: relative;
+      z-index: 1;
+      padding: 1.5rem;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--glass-border);
+      background: linear-gradient(135deg, rgba(0, 64, 77, 0.5), rgba(66, 0, 77, 0.5));
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+
+    .header::before, .header::after {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      opacity: 0.4;
+      filter: blur(80px);
+      animation: pulseGlow 8s ease-in-out infinite alternate;
+    }
+
+    .header::before {
+      top: -150px;
+      left: -50px;
+      background: var(--primary-glow);
+    }
+
+    .header::after {
+      bottom: -150px;
+      right: -50px;
+      background: var(--secondary-glow);
+      animation-delay: 2s;
+    }
+
+    .header h1 {
+      position: relative;
+      text-transform: uppercase;
+      color: var(--lighter);
+      font-size: 2.5rem;
+      font-weight: 900;
+      text-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--primary-glow), 0 0 30px var(--primary-glow);
+      animation: textFlicker 5s linear infinite, hologramEffect 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes textFlicker {
+      0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+        opacity: 1;
+      }
+      20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+        opacity: 0.8;
+      }
+    }
+
+    @keyframes hologramEffect {
+      0% {
+        text-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--primary-glow), 0 0 30px var(--primary-glow);
+      }
+      50% {
+        text-shadow: 0 0 10px var(--secondary-glow), 0 0 20px var(--secondary-glow), 0 0 30px var(--secondary-glow);
+      }
+      100% {
+        text-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--primary-glow), 0 0 30px var(--primary-glow);
+      }
+    }
+
+    /* ===== SEARCH BAR ===== */
+    .search-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .search-box {
+      display: flex;
+      position: relative;
+      overflow: hidden;
+      border-radius: 50px;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .search-box::before {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 300%;
+      height: 300%;
+      background: linear-gradient(135deg, transparent, transparent, var(--glass-shine), transparent, transparent);
+      transition: all 0.6s ease;
+    }
+
+    .search-box:hover::before {
+      top: 100%;
+      left: 100%;
+      transition: all 0.6s ease;
+    }
+
+    .search-box:focus-within {
+      box-shadow: 0 0 15px var(--primary-glow), inset 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .search-box input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 1rem 1.5rem;
+      color: var(--lighter);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    .search-box input::placeholder {
+      color: var(--light);
+      opacity: 0.7;
+    }
+
+    .search-box button {
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 0 1.5rem;
+      font-size: 1.5rem;
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .search-box button:hover {
+      color: var(--primary-glow);
+      text-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    .search-icon {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      position: relative;
+    }
+
+    .search-icon::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 12px;
+      height: 12px;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+    }
+
+    .search-icon::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 14px;
+      width: 2px;
+      height: 8px;
+      background: currentColor;
+      transform: rotate(-45deg);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      background: var(--glass);
+      color: var(--light);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 500;
+      border: 1px solid var(--glass-border);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: rgba(0, 243, 255, 0.15);
+      color: var(--primary);
+      border-color: var(--primary);
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    /* ===== CONTENT ===== */
+    #content {
+      position: relative;
+      z-index: 1;
+      padding: 1rem;
+    }
+
+    .category {
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .category h2 {
+      position: relative;
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-left: 1rem;
+      text-shadow: 0 0 10px var(--primary-glow);
+      animation: categoryPulse 3s ease-in-out infinite alternate;
+    }
+
+    .category h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 5px;
+      background: linear-gradient(to bottom, var(--primary), transparent);
+      box-shadow: 0 0 10px var(--primary-glow);
+      border-radius: 3px;
+      animation: heightPulse 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes categoryPulse {
+      0% {
+        color: var(--primary);
+        text-shadow: 0 0 10px var(--primary-glow);
+      }
+      100% {
+        color: var(--secondary);
+        text-shadow: 0 0 10px var(--secondary-glow);
+      }
+    }
+
+    @keyframes heightPulse {
+      0% {
+        height: 50%;
+      }
+      100% {
+        height: 100%;
+      }
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+      padding: 0.5rem;
+    }
+
+    /* ===== CARD STYLES ===== */
+    .card {
+      position: relative;
+      background: var(--glass);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 300%;
+      height: 300%;
+      background: linear-gradient(135deg, transparent, transparent, var(--glass-shine), transparent, transparent);
+      transition: all 0.6s ease;
+    }
+
+    .card:hover::before {
+      top: 100%;
+      left: 100%;
+      transition: all 0.6s ease;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 15px;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--primary-glow);
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+
+    .card:hover img {
+      transform: scale(1.1);
+    }
+
+    .card-content {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      position: relative;
+    }
+
+    .card-badge {
+      position: absolute;
+      top: -18px;
+      right: 15px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--lighter);
+      font-size: 0.9rem;
+      font-weight: bold;
+      padding: 0.25rem 0.75rem;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .card-badge {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-align: left;
+      margin: 0.5rem 0;
+      color: var(--lighter);
+      text-shadow: 0 0 5px var(--primary-glow);
+      position: relative;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .card-title {
+      color: var(--primary);
+    }
+
+    .card-description {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      text-align: left;
+      color: var(--light);
+      flex-grow: 1;
+    }
+
+    .card-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .stat-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 5px;
+      padding: 0.4rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .stat-title {
+      font-size: 0.7rem;
+      color: var(--primary);
+      margin-bottom: 0.2rem;
+      font-weight: bold;
+    }
+
+    .stat-value {
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .card-price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .price-value {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-shadow: 0 0 5px var(--primary-glow);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .price-value {
+      color: var(--lighter);
+      text-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    .card-button {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: var(--darker);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      padding: 0.4rem 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      opacity: 0;
+      transform: translateX(20px);
+    }
+
+    .card:hover .card-button {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .card-button:hover {
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    /* ===== MODAL STYLES ===== */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(7, 8, 20, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      animation: modalFadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        backdrop-filter: blur(0);
+        -webkit-backdrop-filter: blur(0);
+      }
+      to {
+        opacity: 1;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+    }
+
+    .modal-content {
+      background: var(--glass);
+      border-radius: 20px;
+      width: 90%;
+      max-width: 900px;
+      max-height: 85vh;
+      padding: 0;
+      color: var(--lighter);
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      animation: modalSlideIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+      border: 1px solid var(--glass-border);
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-content::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 1;
+      animation: borderGlow 4s linear infinite;
+    }
+
+    @keyframes borderGlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .modal-header {
+      padding: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+      background: linear-gradient(135deg, rgba(0, 64, 77, 0.7), rgba(66, 0, 77, 0.7));
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .modal-image-container {
+      flex-shrink: 0;
+      width: 180px;
+      height: 180px;
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      border: 2px solid var(--glass-border);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px var(--primary-glow);
+    }
+
+    .modal-image-container::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(0, 243, 255, 0.3));
+      z-index: 1;
+    }
+
+    .modal-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+
+    .modal-header-content {
+      margin-left: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .modal-title-container {
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .modal-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--lighter);
+      text-shadow: 0 0 10px var(--primary-glow);
+      margin-bottom: 0.5rem;
+      animation: textGlow 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes textGlow {
+      0% {
+        text-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--primary-glow);
+        color: var(--lighter);
+      }
+      50% {
+        text-shadow: 0 0 15px var(--secondary-glow), 0 0 30px var(--secondary-glow);
+        color: var(--primary);
+      }
+      100% {
+        text-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--primary-glow);
+        color: var(--lighter);
+      }
+    }
+
+    .modal-subtitle {
+      font-size: 1.1rem;
+      color: var(--primary);
+      display: block;
+      margin-top: 0.25rem;
+    }
+
+    .modal-category-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .modal-badge {
+      background: rgba(0, 243, 255, 0.15);
+      color: var(--primary);
+      font-size: 0.85rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      border: 1px solid var(--primary);
+      box-shadow: 0 0 5px var(--primary-glow);
+      animation: badgePulse 3s ease-in-out infinite;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% {
+        box-shadow: 0 0 5px var(--primary-glow);
+      }
+      50% {
+        box-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--primary-glow);
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--glass-border);
+      color: var(--light);
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .close-btn:hover {
+      background: rgba(255, 0, 60, 0.2);
+      color: var(--danger);
+      border-color: var(--danger);
+      box-shadow: 0 0 10px var(--danger-glow);
+      transform: rotate(90deg);
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+      overflow-y: auto;
+      max-height: 60vh;
+    }
+
+    .modal-section {
+      margin-bottom: 2rem;
+      animation: sectionFadeIn 0.5s ease-out both;
+    }
+
+    @keyframes sectionFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--glass-border);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(to right, var(--primary), transparent);
+      animation: widthPulse 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes widthPulse {
+      from {
+        width: 50px;
+      }
+      to {
+        width: 150px;
+      }
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .spec-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .spec-item:hover {
+      background: rgba(0, 243, 255, 0.1);
+      box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .spec-label {
+      font-size: 0.85rem;
+      color: var(--light);
+      margin-bottom: 0.5rem;
+    }
+
+    .spec-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .property-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .property-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .property-item:hover {
+      background: rgba(0, 243, 255, 0.1);
+      box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .property-icon {
+      margin-right: 0.75rem;
+      color: var(--secondary);
+      font-size: 1.2rem;
+    }
+
+    .modal-footer {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.2);
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .price-large {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .action-btn {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .action-btn::before {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 300%;
+      height: 300%;
+      background: linear-gradient(135deg, transparent, transparent, rgba(255, 255, 255, 0.2), transparent, transparent);
+      transition: all 0.6s ease;
+    }
+
+    .action-btn:hover::before {
+      top: 100%;
+      left: 100%;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: var(--darker);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 5px 20px rgba(0, 243, 255, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0, 243, 255, 0.1);
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .btn-icon {
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    /* ===== LOADING ANIMATION ===== */
+    .loading-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 200px;
+    }
+
+    .loader {
+      width: 50px;
+      height: 50px;
+      border: 3px solid var(--glass-border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loading-text {
+      margin-left: 1rem;
+      font-size: 1.2rem;
+      color: var(--primary);
+      animation: textPulse 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes textPulse {
+      from {
+        opacity: 0.7;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes pulseGlow {
+      0% {
+        opacity: 0.3;
+        filter: blur(80px);
+      }
+      50% {
+        opacity: 0.5;
+        filter: blur(60px);
+      }
+      100% {
+        opacity: 0.3;
+        filter: blur(80px);
+      }
+    }
+
+    /* ===== RESPONSIVE STYLES ===== */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+
+      .modal-header {
+        flex-direction: column;
+      }
+
+      .modal-image-container {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 1rem;
+      }
+
+      .modal-header-content {
+        margin-left: 0;
+        text-align: center;
+      }
+
+      .modal-title {
+        font-size: 1.8rem;
+      }
+
+      .modal-category-badges {
+        justify-content: center;
+      }
+
+      .specs-grid,
+      .property-list {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-footer {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .action-buttons {
+        width: 100%;
+      }
+
+      .action-btn {
+        flex: 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header h1 {
+        font-size: 1.5rem;
+      }
+
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .search-box input {
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+      }
+
+      .modal-title {
+        font-size: 1.5rem;
+      }
+
+      .modal-body {
+        padding: 1rem;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+      }
+    }
+
+    /* No results animation */
+    .no-results {
+      text-align: center;
+      padding: 2rem;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .no-results-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Particle background -->
+  <div id="particles-js"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <h1>EQUIPAMIENTO DE D&D 5E</h1>
+  </div>
+
+  <!-- Search bar -->
+  <div class="search-container">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Buscar equipamiento... (arma, armadura, etc.)" autocomplete="off">
+      <button id="search-button"><span class="search-icon"></span></button>
+    </div>
+    <div class="filters" id="filters">
+      <!-- Filters will be dynamically added here -->
+    </div>
+  </div>
+
+  <!-- Loading indicator -->
+  <div id="loading" class="loading-container">
+    <div class="loader"></div>
+    <p class="loading-text">Cargando equipamiento...</p>
+  </div>
+
+  <!-- Main content -->
+  <div id="content"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const content = document.getElementById("content");
+      const searchInput = document.getElementById("search-input");
+      const searchButton = document.getElementById("search-button");
+      const loadingElement = document.getElementById("loading");
+      const filtersContainer = document.getElementById("filters");
+      
+      let allItems = [];
+      let categories = [];
+      let activeFilter = "all";
+
+      // Create particle background
+      createParticles();
+      
+      // Mock data for demonstration - replace with your actual data fetching
+      createMockData()
+        .then(data => {
+          categories = data;
+          
+          // Extract all items for searching
+          categories.forEach(category => {
+            allItems = [...allItems, ...category.items];
+          });
+          
+          // Hide loading and render content
+          setTimeout(() => {
+            loadingElement.style.display = "none";
+            renderCategories(categories);
+            createFilters(categories);
+          }, 1500); // Simulate loading time
+        })
+        .catch(err => {
+          console.error("Error:", err);
+          loadingElement.innerHTML = `
+            <div class="error-message">
+              <p>Error al cargar los datos. Inténtalo de nuevo más tarde.</p>
+            </div>
+          `;
+        });
+      
+      // Search functionality
+      searchButton.addEventListener("click", performSearch);
+      searchInput.addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+          performSearch();
+        }
+      });
+      
+      function performSearch() {
+        const query = searchInput.value.toLowerCase().trim();
+        
+        if (query === "") {
+          renderCategories(categories);
+          return;
+        }
+        
+        const filteredItems = allItems.filter(item => 
+          item.title.toLowerCase().includes(query) ||
+          item.description.toLowerCase().includes(query) ||
+          item.category.toLowerCase().includes(query) ||
+          item.damageType.toLowerCase().includes(query) ||
+          item.properties.some(prop => prop.toLowerCase().includes(query))
+        );
+        
+        if (filteredItems.length === 0) {
+          content.innerHTML = `
+            <div class="no-results">
+              <div class="no-results-icon">🔍</div>
+              <p>No se encontraron resultados para "${query}"</p>
+              <button class="filter-btn" onclick="clearSearch()">Mostrar todo</button>
+            </div>
+          `;
+        } else {
+          // Group by category
+          const filteredCategories = [];
+          
+          categories.forEach(category => {
+            const items = filteredItems.filter(item => {
+              // Check if this item belongs to this category
+              return category.items.some(categoryItem => categoryItem.id === item.id);
+            });
+            
+            if (items.length > 0) {
+              filteredCategories.push({
+                name: category.name,
+                items: items
+              });
+            }
+          });
+          
+          renderCategories(filteredCategories);
+        }
+      }
+      
+      // Create filter buttons
+      function createFilters(categories) {
+        // Add "All" filter
+        const allFilter = document.createElement("button");
+        allFilter.classList.add("filter-btn", "active");
+        allFilter.textContent = "Todos";
+        allFilter.dataset.filter = "all";
+        allFilter.addEventListener("click", () => filterItems("all"));
+        filtersContainer.appendChild(allFilter);
+        
+        // Add filter for each category
+        categories.forEach(category => {
+          const filterBtn = document.createElement("button");
+          filterBtn.classList.add("filter-btn");
+          filterBtn.textContent = category.name;
+          filterBtn.dataset.filter = category.name;
+          filterBtn.addEventListener("click", () => filterItems(category.name));
+          filtersContainer.appendChild(filterBtn);
+        });
+      }
+      
+      // Filter items by category
+      function filterItems(filter) {
+        activeFilter = filter;
+        
+        // Update active filter button
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+          btn.classList.remove("active");
+          if (btn.dataset.filter === filter) {
+            btn.classList.add("active");
+          }
+        });
+        
+        if (filter === "all") {
+          renderCategories(categories);
+        } else {
+          const filteredCategories = categories.filter(category => category.name === filter);
+          renderCategories(filteredCategories);
+        }
+      }
+      
+      // Clear search and show all items
+      window.clearSearch = function() {
+        searchInput.value = "";
+        renderCategories(categories);
+      };
+      
+      // Create cards for each item
+      function renderCategories(categoriesToRender) {
+        content.innerHTML = "";
+        
+        categoriesToRender.forEach((category, index) => {
+          // Create category section with some delay for animation
+          setTimeout(() => {
+            const categoryDiv = document.createElement("div");
+            categoryDiv.classList.add("category");
+            categoryDiv.style.opacity = "0";
+            categoryDiv.style.transform = "translateY(20px)";
+            
+            const categoryTitle = document.createElement("h2");
+            categoryTitle.textContent = category.name;
+            categoryDiv.appendChild(categoryTitle);
+            
+            const container = document.createElement("div");
+            container.classList.add("container");
+            
+            category.items.forEach((item, itemIndex) => {
+              // Create card with delay for staggered animation
+              setTimeout(() => {
+                const card = createCard(item);
+                container.appendChild(card);
+              }, itemIndex * 100);
+            });
+            
+            categoryDiv.appendChild(container);
+            content.appendChild(categoryDiv);
+            
+            // Animate in
+            setTimeout(() => {
+              categoryDiv.style.opacity = "1";
+              categoryDiv.style.transform = "translateY(0)";
+              categoryDiv.style.transition = "all 0.5s ease-out";
+            }, 50);
+          }, index * 200);
+        });
+      }
+      
+      // Create a card for a single item
+      function createCard(item) {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        
+        // Default image if none provided (or use Pexels stock photos)
+        const imgPath = getItemImage(item);
+        
+        let categoryBadgeText = "";
+        if (item.category === "Arma marcial") {
+          categoryBadgeText = "Marcial";
+        } else if (item.category === "Arma simple") {
+          categoryBadgeText = "Simple";
+        } else {
+          categoryBadgeText = item.category.split(" ")[0];
+        }
+        
+        card.innerHTML = `
+          <img src="${imgPath}" alt="${item.title}">
+          <div class="card-content">
+            <div class="card-badge">${categoryBadgeText}</div>
+            <h3 class="card-title">${item.title}</h3>
+            <p class="card-description">${item.description}</p>
+            
+            <div class="card-stats">
+              <div class="stat-item">
+                <div class="stat-title">DAÑO</div>
+                <div class="stat-value">${item.damage || "N/A"}</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-title">TIPO</div>
+                <div class="stat-value">${item.damageType || "N/A"}</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-title">ALCANCE</div>
+                <div class="stat-value">${item.range || "N/A"}</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-title">PESO</div>
+                <div class="stat-value">${item.weight || "N/A"}</div>
+              </div>
+            </div>
+            
+            <div class="card-price">
+              <div class="price-value">${item.price}</div>
+              <button class="card-button">DETALLES</button>
+            </div>
+          </div>
+        `;
+        
+        // Event for opening the modal with details
+        card.addEventListener("click", () => openModal(item));
+        
+        return card;
+      }
+      
+      // Helper function to get representative image - replace with real image paths
+      function getItemImage(item) {
+        // Use mock images based on type for demo
+        const type = item.type.toLowerCase();
+        
+        if (type.includes("arma") && type.includes("cuerpo")) {
+          return "https://images.pexels.com/photos/14911204/pexels-photo-14911204.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+        } else if (type.includes("arma") && type.includes("distancia")) {
+          return "https://images.pexels.com/photos/5701895/pexels-photo-5701895.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+        } else if (type.includes("armadura")) {
+          return "https://images.pexels.com/photos/5700046/pexels-photo-5700046.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+        } else {
+          return "https://images.pexels.com/photos/5701867/pexels-photo-5701867.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+        }
+      }
+      
+      // Open modal with item details
+      function openModal(item) {
+        const overlay = document.createElement("div");
+        overlay.classList.add("overlay");
+        
+        const modalContent = document.createElement("div");
+        modalContent.classList.add("modal-content");
+        
+        const imgPath = getItemImage(item);
+        
+        // Generate properties list with icons
+        const propertiesList = item.properties.map(prop => {
+          let icon = "⚡"; // Default icon
+          
+          // Customize icon based on property (could expand this)
+          if (prop.toLowerCase().includes("versátil")) icon = "⚔️";
+          if (prop.toLowerCase().includes("pesada")) icon = "🛡️";
+          if (prop.toLowerCase().includes("ligera")) icon = "💨";
+          if (prop.toLowerCase().includes("finesse")) icon = "✨";
+          if (prop.toLowerCase().includes("dos manos")) icon = "👐";
+          if (prop.toLowerCase().includes("munición")) icon = "🏹";
+          if (prop.toLowerCase().includes("arrojadiza")) icon = "🎯";
+          
+          return `
+            <li class="property-item">
+              <span class="property-icon">${icon}</span>
+              <span>${prop}</span>
+            </li>
+          `;
+        }).join('');
+        
+        modalContent.innerHTML = `
+          <div class="modal-header">
+            <div class="modal-image-container">
+              <img src="${imgPath}" alt="${item.title}" class="modal-image">
+            </div>
+            <div class="modal-header-content">
+              <div class="modal-title-container">
+                <h3 class="modal-title">${item.title}</h3>
+                <span class="modal-subtitle">${item.type}</span>
+              </div>
+              
+              <div class="modal-category-badges">
+                <span class="modal-badge">${item.category}</span>
+                <span class="modal-badge">${item.damageType || 'N/A'}</span>
+              </div>
+            </div>
+            <button class="close-btn">&times;</button>
+          </div>
+          
+          <div class="modal-body">
+            <div class="modal-section" style="animation-delay: 0.1s">
+              <h4 class="section-title">Descripción</h4>
+              <p>${item.description}</p>
+            </div>
+            
+            <div class="modal-section" style="animation-delay: 0.2s">
+              <h4 class="section-title">Especificaciones</h4>
+              <div class="specs-grid">
+                <div class="spec-item">
+                  <div class="spec-label">Origen</div>
+                  <div class="spec-value">${item.origin}</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">Daño</div>
+                  <div class="spec-value">${item.damage || 'N/A'}</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">Tipo de daño</div>
+                  <div class="spec-value">${item.damageType || 'N/A'}</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">Crítico</div>
+                  <div class="spec-value">${item.critical || 'N/A'}</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">Alcance</div>
+                  <div class="spec-value">${item.range || 'N/A'}</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">Peso</div>
+                  <div class="spec-value">${item.weight}</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="modal-section" style="animation-delay: 0.3s">
+              <h4 class="section-title">Propiedades</h4>
+              <ul class="property-list">
+                ${propertiesList}
+              </ul>
+            </div>
+            
+            <div class="modal-section" style="animation-delay: 0.4s">
+              <h4 class="section-title">Encantamientos</h4>
+              <p>${item.enchantments || 'Ninguno'}</p>
+            </div>
+          </div>
+          
+          <div class="modal-footer">
+            <div class="price-large">${item.price}</div>
+     
+          </div>
+        `;
+        
+        // Close button functionality
+        const closeButton = modalContent.querySelector(".close-btn");
+        closeButton.addEventListener("click", () => {
+          overlay.style.opacity = "0";
+          overlay.style.backdropFilter = "blur(0)";
+          overlay.style.webkitBackdropFilter = "blur(0)";
+          
+          modalContent.style.transform = "translateY(50px)";
+          modalContent.style.opacity = "0";
+          
+          setTimeout(() => overlay.remove(), 500);
+        });
+        
+        // Add action button functionality (demo only)
+        const actionButtons = modalContent.querySelectorAll(".action-btn");
+        actionButtons.forEach(btn => {
+          btn.addEventListener("click", function(e) {
+            e.stopPropagation();
+            
+            // Visual feedback
+            this.style.transform = "scale(0.95)";
+            setTimeout(() => {
+              this.style.transform = "";
+            }, 100);
+            
+            // Demo feedback
+            const message = document.createElement("div");
+            message.style.position = "fixed";
+            message.style.bottom = "20px";
+            message.style.right = "20px";
+            message.style.background = "rgba(0, 243, 255, 0.15)";
+            message.style.color = "var(--primary)";
+            message.style.padding = "15px 20px";
+            message.style.borderRadius = "10px";
+            message.style.boxShadow = "0 0 15px rgba(0, 243, 255, 0.4)";
+            message.style.zIndex = "9999";
+            message.style.backdropFilter = "blur(10px)";
+            message.style.webkitBackdropFilter = "blur(10px)";
+            message.style.border = "1px solid var(--glass-border)";
+            message.style.fontFamily = "'Rajdhani', sans-serif";
+            message.style.opacity = "0";
+            message.style.transform = "translateY(20px)";
+            message.style.transition = "all 0.3s ease";
+            
+            if (this.classList.contains("btn-primary")) {
+              message.textContent = `${item.title} añadido al carrito`;
+            } else {
+              message.textContent = `${item.title} añadido a tu lista`;
+            }
+            
+            document.body.appendChild(message);
+            
+            // Animate in
+            setTimeout(() => {
+              message.style.opacity = "1";
+              message.style.transform = "translateY(0)";
+            }, 10);
+            
+            // Auto remove after delay
+            setTimeout(() => {
+              message.style.opacity = "0";
+              message.style.transform = "translateY(20px)";
+              
+              setTimeout(() => {
+                message.remove();
+              }, 300);
+            }, 3000);
+          });
+        });
+        
+        overlay.appendChild(modalContent);
+        document.body.appendChild(overlay);
+      }
+      
+      // Mock data for demonstration (replace with actual data loading)
+      async function createMockData() {
+        return [
+          {
+            name: "Armas",
+            items: [
+              {
+                id: "1",
+                title: "Espada larga",
+                description: "Una espada de dos filos con empuñadura para dos manos",
+                image: "espada-larga",
+                price: "15 po",
+                weight: "3 lb",
+                origin: "Manual del Jugador",
+                type: "Arma cuerpo a cuerpo",
+                category: "Arma marcial",
+                range: "5 pies",
+                damageType: "Cortante",
+                critical: "19-20/x2",
+                damage: "1d8",
+                enchantments: "Ninguno",
+                properties: ["Versátil (1d10)", "Elegante", "Equilibrada"]
+              },
+              {
+                id: "2",
+                title: "Arco largo",
+                description: "Arco grande de alta precisión y alcance excepcional",
+                image: "arco-largo",
+                price: "50 po",
+                weight: "2 lb",
+                origin: "Manual del Jugador",
+                type: "Arma a distancia",
+                category: "Arma marcial",
+                range: "150/600 pies",
+                damageType: "Perforante",
+                critical: "x3",
+                damage: "1d8",
+                enchantments: "Ninguno",
+                properties: ["Munición", "Pesada", "Dos manos", "Precisión"]
+              },
+              {
+                id: "3",
+                title: "Daga",
+                description: "Arma pequeña y versátil, perfecta como arma secundaria",
+                image: "daga",
+                price: "2 po",
+                weight: "1 lb",
+                origin: "Manual del Jugador",
+                type: "Arma cuerpo a cuerpo",
+                category: "Arma simple",
+                range: "5 pies",
+                damageType: "Perforante",
+                critical: "19-20/x2",
+                damage: "1d4",
+                enchantments: "Ninguno",
+                properties: ["Finesse", "Ligera", "Arrojadiza (20/60 pies)", "Ocultable"]
+              },
+              {
+                id: "4",
+                title: "Hacha de batalla",
+                description: "Hacha de guerra de gran poder destructivo",
+                image: "hacha-batalla",
+                price: "10 po",
+                weight: "4 lb",
+                origin: "Manual del Jugador",
+                type: "Arma cuerpo a cuerpo",
+                category: "Arma marcial",
+                range: "5 pies",
+                damageType: "Cortante",
+                critical: "x3",
+                damage: "1d8",
+                enchantments: "Ninguno",
+                properties: ["Versátil (1d10)", "Brutal", "Demoledora"]
+              },
+              {
+                id: "5",
+                title: "Ballesta ligera",
+                description: "Arma mecánica de proyectiles que se puede usar con una mano",
+                image: "ballesta-ligera",
+                price: "25 po",
+                weight: "5 lb",
+                origin: "Manual del Jugador",
+                type: "Arma a distancia",
+                category: "Arma simple",
+                range: "80/320 pies",
+                damageType: "Perforante",
+                critical: "19-20/x2",
+                damage: "1d8",
+                enchantments: "Ninguno",
+                properties: ["Munición", "Carga", "Ligera", "Dos manos"]
+              }
+            ]
+          },
+          {
+            name: "Armaduras",
+            items: [
+              {
+                id: "6",
+                title: "Cota de malla",
+                description: "Armadura de anillos metálicos entrelazados que ofrece gran protección",
+                image: "cota-malla",
+                price: "75 po",
+                weight: "55 lb",
+                origin: "Manual del Jugador",
+                type: "Armadura",
+                category: "Armadura media",
+                range: "-",
+                damageType: "-",
+                critical: "-",
+                damage: "-",
+                enchantments: "Ninguno",
+                properties: ["CA 16", "Desventaja en Sigilo", "Fuerza 13", "Resistente"]
+              },
+              {
+                id: "7",
+                title: "Cuero tachonado",
+                description: "Armadura de cuero reforzada con remaches metálicos",
+                image: "cuero-tachonado",
+                price: "45 po",
+                weight: "13 lb",
+                origin: "Manual del Jugador",
+                type: "Armadura",
+                category: "Armadura ligera",
+                range: "-",
+                damageType: "-",
+                critical: "-",
+                damage: "-",
+                enchantments: "Ninguno",
+                properties: ["CA 12", "Ligera", "Flexible", "Silenciosa"]
+              },
+              {
+                id: "8",
+                title: "Armadura de placas",
+                description: "La mejor protección disponible, formada por placas metálicas interconectadas",
+                image: "armadura-placas",
+                price: "1500 po",
+                weight: "65 lb",
+                origin: "Manual del Jugador",
+                type: "Armadura",
+                category: "Armadura pesada",
+                range: "-",
+                damageType: "-",
+                critical: "-",
+                damage: "-",
+                enchantments: "Ninguno",
+                properties: ["CA 18", "Desventaja en Sigilo", "Fuerza 15", "Impenetrable", "Resistente a criticos"]
+              }
+            ]
+          },
+          {
+            name: "Objetos mágicos",
+            items: [
+              {
+                id: "9",
+                title: "Anillo de protección",
+                description: "Un anillo encantado que mejora las defensas del portador",
+                image: "anillo-proteccion",
+                price: "3500 po",
+                weight: "-",
+                origin: "Manual del Dungeon Master",
+                type: "Anillo",
+                category: "Objeto mágico poco común",
+                range: "-",
+                damageType: "-",
+                critical: "-",
+                damage: "-",
+                enchantments: "+1 a CA y tiradas de salvación",
+                properties: ["Requiere sintonización", "Protección", "Defensivo"]
+              },
+              {
+                id: "10",
+                title: "Varita de bolas de fuego",
+                description: "Varita que permite lanzar el hechizo bola de fuego",
+                image: "varita-fuego",
+                price: "8000 po",
+                weight: "1 lb",
+                origin: "Manual del Dungeon Master",
+                type: "Varita",
+                category: "Objeto mágico raro",
+                range: "120 pies",
+                damageType: "Fuego",
+                critical: "-",
+                damage: "8d6",
+                enchantments: "Lanza el hechizo Bola de fuego (nivel 3)",
+                properties: ["Requiere sintonización por lanzador de conjuros", "7 cargas", "Recarga 1d6+1 cargas al amanecer", "Evocación"]
+              }
+            ]
+          }
+        ];
+      }
+      
+      // Create particle background
+      function createParticles() {
+        const particlesJS = document.getElementById("particles-js");
+        
+        // Function to create a particle
+        function createParticle() {
+          const particle = document.createElement("div");
+          particle.style.position = "absolute";
+          particle.style.width = Math.random() * 3 + 1 + "px";
+          particle.style.height = particle.style.width;
+          particle.style.background = getRandomColor();
+          particle.style.borderRadius = "50%";
+          particle.style.opacity = Math.random() * 0.3 + 0.1;
+          particle.style.pointerEvents = "none";
+          
+          // Initial position (always starts just outside viewport)
+          particle.style.top = Math.random() * window.innerHeight + "px";
+          particle.style.left = window.innerWidth + Math.random() * 100 + "px";
+          
+          // Random movement values
+          const duration = Math.random() * 20 + 10; // seconds
+          const delay = Math.random() * 5; // seconds
+          
+          // Apply animations
+          particle.style.animation = `moveParticle ${duration}s linear ${delay}s infinite`;
+          
+          // Add to container
+          particlesJS.appendChild(particle);
+        }
+        
+        // Get a random color from our theme
+        function getRandomColor() {
+          const colors = [
+            "var(--primary)",
+            "var(--secondary)",
+            "var(--accent)",
+            "rgba(255, 255, 255, 0.7)"
+          ];
+          return colors[Math.floor(Math.random() * colors.length)];
+        }
+        
+        // Add keyframe animation for particles
+        const styleSheet = document.createElement("style");
+        styleSheet.type = "text/css";
+        styleSheet.innerText = `
+          @keyframes moveParticle {
+            from {
+              transform: translateX(0) translateY(0);
+            }
+            to {
+              transform: translateX(-${window.innerWidth + 200}px) translateY(${Math.random() * 200 - 100}px);
+            }
+          }
+        `;
+        document.head.appendChild(styleSheet);
+        
+        // Create multiple particles
+        for (let i = 0; i < 100; i++) {
+          createParticle();
+        }
+      }
+    });
+  </script>
+</body>
+</html>

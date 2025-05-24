@@ -1,0 +1,29 @@
+{
+    "raceName": "Hobgoblin",
+    "raceDescription": "Los Hobgoblins son grandes goblinoides con piel de color naranja oscuro o rojo-anaranjado. Virtuosos en la fuerza física y el dominio marcial, los Hobgoblins miden el valor de una persona por su habilidad y astucia en el combate. Aunque su cultura está profundamente ligada a la guerra y la estrategia, estos guerreros disciplinados poseen un fuerte sentido de la lealtad hacia sus clanes. Su imponente presencia y su inclinación por la batalla los convierten en adversarios temibles y aliados excepcionales para aquellos que ganan su respeto.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "attributes": {
+        "Fuerza": "+2",
+        "Constitución": "+1"
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Violencia en la Sangre",
+            "description": "Al atacar con un arma cuerpo a cuerpo una vez por turno, puedes volver a lanzar un dado de daño para intentar conseguir un resultado mayor. Por ejemplo, si tiras 2d6 y sacas 2 y 5, puedes volver a tirar el dado que sacó el 2."
+        },
+        {
+            "name": "Virulencia",
+            "description": "+5 en pruebas de Atletismo en las que intentes empujar, apresar o retener a una criatura."
+        },
+        {
+            "name": "Presteza",
+            "description": "Lanzas 2d20 para la iniciativa y escoges el resultado más alto."
+        }
+    ]
+}

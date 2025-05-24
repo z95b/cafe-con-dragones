@@ -1,0 +1,1107 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="media/ico.ico" />
+
+  <title>Razas DyP</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2a2d3e;
+      --secondary: #1a1b26;
+      --accent: #7aa2f7;
+      --text: #c0caf5;
+      --muted: #565f89;
+      --card-bg: #1f2335;
+      --hover: #3b4261;
+      --neon-blue: #00f3ff;
+      --neon-purple: #9d00ff;
+      --neon-pink: #ff00f7;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Trebuchet MS', sans-serif;
+      background: linear-gradient(135deg, var(--secondary), #000);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .img-preview {
+      width: 150px;
+      height: 100%;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-content {
+      max-width: 80vw;
+      max-height: 80vh;
+      position: relative;
+    }
+
+    .lightbox img {
+      width: 100%;
+      height: auto;
+      cursor: grab;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .prev-btn {
+      left: 10px;
+    }
+
+    .next-btn {
+      right: 10px;
+    }
+
+    .container {
+      max-width: 90%;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: rgba(42, 45, 62, 0.8);
+      border-radius: 1rem;
+      box-shadow: 0 0 20px var(--neon-blue);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(122, 162, 247, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg,
+          transparent,
+          rgba(122, 162, 247, 0.1),
+          transparent);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+      }
+
+      100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+      }
+    }
+
+    .title {
+      font-family: 'Cinzel', serif;
+      font-size: 5.5rem;
+      background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px rgba(122, 162, 247, 0.3);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px var(--neon-blue),
+          0 0 20px var(--neon-blue),
+          0 0 30px var(--neon-purple);
+      }
+
+      to {
+        text-shadow: 0 0 20px var(--neon-blue),
+          0 0 30px var(--neon-purple),
+          0 0 40px var(--neon-pink);
+      }
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: rgba(42, 45, 62, 0.8);
+      border-radius: 1rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(122, 162, 247, 0.2);
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .filter-title {
+      font-family: 'Cinzel', serif;
+      color: var(--neon-blue);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 5px var(--neon-blue);
+    }
+
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .filter-select {
+      background: rgba(31, 35, 53, 0.8);
+      border: 1px solid var(--neon-blue);
+      color: var(--text);
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      width: 100%;
+    }
+
+    .filter-select option {
+      background: var(--secondary);
+    }
+
+    .btn {
+      padding: 0.5rem 1rem;
+      background: rgba(31, 35, 53, 0.8);
+      border: 1px solid var(--neon-blue);
+      color: var(--text);
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg,
+          transparent,
+          rgba(0, 243, 255, 0.2),
+          transparent);
+      transition: 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      background: rgba(59, 66, 97, 0.8);
+      border-color: var(--neon-purple);
+      box-shadow: 0 0 10px var(--neon-blue);
+    }
+
+    .btn.active {
+      background: var(--neon-blue);
+      color: var(--secondary);
+      border-color: var(--neon-purple);
+      box-shadow: 0 0 15px var(--neon-blue);
+    }
+
+    .search-bar {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: rgba(31, 35, 53, 0.8);
+      border: 1px solid var(--neon-blue);
+      color: var(--text);
+      border-radius: 0.5rem;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .search-bar:focus {
+      outline: none;
+      border-color: var(--neon-purple);
+      box-shadow: 0 0 15px var(--neon-blue);
+    }
+
+    .thumbnails-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .thumbnail {
+      aspect-ratio: 0.9;
+
+      background-size: cover;
+      background-position: top;
+      border-radius: 1rem;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+      border: 2px solid var(--neon-blue);
+      overflow: hidden;
+    }
+
+    .thumbnail::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom,
+          transparent 50%,
+          rgba(0, 0, 0, 0.8));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .thumbnail img {
+      width: 80%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+
+    .thumbnail:hover::before {
+      opacity: 1;
+    }
+
+    .thumbnail:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 0 20px var(--neon-blue);
+    }
+
+    .thumbnail-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background: rgba(26, 27, 38, 0.9);
+      color: var(--neon-blue);
+      font-size: 1rem;
+      text-align: center;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .thumbnail:hover .thumbnail-title {
+      transform: translateY(0);
+    }
+
+    .races-container {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .race-card {
+      background: rgba(31, 35, 53, 0.8);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+      display: grid;
+      grid-template-columns: 500px 1fr;
+      transition: all 0.3s ease;
+      border: 1px solid var(--neon-blue);
+      backdrop-filter: blur(10px);
+    }
+
+    .race-card.variant {
+      background: rgba(157, 0, 255, 0.1);
+      border: 2px solid var(--neon-purple);
+      box-shadow: 0 0 30px var(--neon-purple);
+    }
+
+    .race-card.variant .race-title {
+      background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .race-card.variant .attribute {
+      border-color: var(--neon-purple);
+    }
+
+    .race-image {
+      background-size: cover;
+      background-position: center;
+      min-height: 500px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .race-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg,
+          rgba(157, 0, 255, 0.1));
+    }
+
+    .race-content {
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .race-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+    }
+
+    .race-description {
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+
+    .attributes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .attribute {
+      background: rgba(42, 45, 62, 0.8);
+      padding: 1rem;
+      border-radius: 1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid var(--neon-blue);
+    }
+
+    .attribute:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 15px var(--neon-blue);
+    }
+
+    .attribute-name {
+      color: var(--neon-blue);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .attribute-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--text);
+    }
+
+    .abilities {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .ability {
+      background: rgba(42, 45, 62, 0.8);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      border: 1px solid var(--neon-blue);
+      transition: all 0.3s ease;
+    }
+
+    .ability:hover {
+      transform: translateX(5px);
+      box-shadow: 0 0 15px var(--neon-blue);
+    }
+
+    .ability-name {
+      color: var(--neon-blue);
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .ability-description {
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .meta-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(42, 45, 62, 0.8);
+      padding: 0.75rem 1.5rem;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      border: 1px solid var(--neon-blue);
+      color: var(--neon-blue);
+      transition: all 0.3s ease;
+    }
+
+    .meta-item svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .size-indicator {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .size-box {
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--neon-blue);
+      border-radius: 4px;
+    }
+
+    .size-box.active {
+      background: var(--neon-blue);
+    }
+
+    /* Loading spinner styles */
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 5px solid rgba(0, 243, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: var(--neon-blue);
+      animation: spin 1s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loading-text {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: var(--neon-blue);
+      text-shadow: 0 0 10px var(--neon-blue);
+    }
+
+    @media (max-width: 1200px) {
+      .race-card {
+        grid-template-columns: 300px 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .race-card {
+        grid-template-columns: 1fr;
+      }
+
+      .race-image {
+        height: 300px;
+      }
+
+      .thumbnails-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .title {
+        font-size: 2.5rem;
+      }
+
+      .filter-group {
+        min-width: 100%;
+      }
+
+      .meta-info {
+        flex-direction: column;
+      }
+
+      .meta-item {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="https://z95b.github.io/DyP">
+        <h1 class="title">Dragonas y Perronas</h1>
+      </a>
+    </header>
+
+    <!-- Loading spinner container -->
+    <div id="loadingContainer" class="loading-container">
+      <div class="spinner"></div>
+      <p class="loading-text">...Bitch, you know I'm sexy...</p>
+    </div>
+
+    <div id="contentContainer" style="display: none;">
+      <div class="filters">
+        <div class="filter-group">
+          <h3 class="filter-title">Atributos</h3>
+          <div class="filter-buttons" id="attribute-filters">
+            <button class="btn" data-filter="Fuerza">Fuerza</button>
+            <button class="btn" data-filter="Destreza">Destreza</button>
+            <button class="btn" data-filter="Constitución">Constitución</button>
+            <button class="btn" data-filter="Inteligencia">Inteligencia</button>
+            <button class="btn" data-filter="Sabiduría">Sabiduría</button>
+            <button class="btn" data-filter="Carisma">Carisma</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3 class="filter-title">Ordenar</h3>
+          <select class="filter-select" id="sortSelect">
+            <option value="">Sin ordenar</option>
+            <option value="name-asc">Nombre A-Z</option>
+            <option value="name-desc">Nombre Z-A</option>
+            <option value="speed-asc">Velocidad (Menor a Mayor)</option>
+            <option value="speed-desc">Velocidad (Mayor a Menor)</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <h3 class="filter-title">Tamaño</h3>
+          <select class="filter-select" id="sizeSelect" multiple>
+            <option value="1">Diminuto (0.05 - 0.49m)</option>
+            <option value="2">Pequeño (0.50 - 1.39m)</option>
+            <option value="3">Mediano (1.40 - 1.89m)</option>
+            <option value="4">Grande (1.90 - 2.30m)</option>
+            <option value="5">Enorme (2.30 - 3.49m)</option>
+            <option value="6">Gigantesco (>3.50m)</option>
+          </select>
+        </div>
+
+        <!-- <div class="filter-group">
+          <h3 class="filter-title">Idiomas</h3>
+          <select class="filter-select" id="languageSelect" multiple>
+          </select>
+        </div>-->
+        <button class="btn" style="width: 100%;" id="resetFilters">Resetear Filtros</button>
+      </div>
+
+      <input type="text" class="search-bar" placeholder="🔍 Buscar razas..." id="searchInput" style="display:none;">
+
+      <div class="thumbnails-grid" id="thumbnailsGrid"></div>
+      <div class="races-container" id="racesContainer"></div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <span class="close-btn" onclick="closeLightbox()">&times;</span>
+      <span class="nav-btn prev-btn" onclick="changeImage(-1)">&#10094;</span>
+      <span class="nav-btn next-btn" onclick="changeImage(1)">&#10095;</span>
+      <img id="lightbox-img">
+    </div>
+  </div>
+
+  <script>
+    // Global variables
+    const attributeColors = {
+      Fuerza: '#ff7675',
+      Destreza: '#55efc4',
+      Constitución: '#ffeaa7',
+      Inteligencia: '#74b9ff',
+      Sabiduría: '#a29bfe',
+      Carisma: '#fd79a8'
+    };
+
+    let races = [];
+    let activeFilters = {
+      attributes: new Set(),
+      sizes: new Set(),
+      languages: new Set()
+    };
+    let currentSort = { field: null, direction: 'asc' };
+    let currentIndex = 0;
+    let imageUrls = [];
+
+    // Main initialization function
+    document.addEventListener("DOMContentLoaded", async function () {
+      // Start loading races immediately
+      await loadRaces();
+
+      // Hide loading spinner and show content
+      document.getElementById('loadingContainer').style.display = 'none';
+      document.getElementById('contentContainer').style.display = 'block';
+
+      // Render UI components
+      await renderThumbnails();
+      await renderRaces();
+
+      // Setup lightbox functionality
+      setupLightbox();
+
+      // Setup event listeners
+      setupEventListeners();
+    });
+
+    // Utility functions
+    function getHighestAttribute(attributes) {
+      let highest = { attr: null, value: -Infinity };
+      for (const [attr, value] of Object.entries(attributes)) {
+        const numValue = parseInt(value.replace('+', ''));
+        if (numValue > highest.value) {
+          highest = { attr, value: numValue };
+        }
+      }
+      return highest.attr;
+    }
+
+    function getSizeLabel(size) {
+      const sizes = [' Diminuto (0.05 - 0.49m)', 'Pequeño (0.50 - 1.39m)', 'Mediano (1.40 - 1.89m)', 'Grande (1.90 - 2.30m)', 'Enorme (2.30 - 3.49m)', 'Gigantesco (>3.50m)'];
+      return sizes[size - 1];
+    }
+
+    // Async data loading function
+    async function loadRaces() {
+      try {
+        const indexResponse = await fetch('razas_index.json');
+        const files = await indexResponse.json();
+
+        const racePromises = files.map(async (file) => {
+          const raceResponse = await fetch(`razas/${file}`);
+          const race = await raceResponse.json();
+          return {
+            ...race,
+            imageUrl: `razas/${file.replace('.json', '.png')}`
+          };
+        });
+
+        races = await Promise.all(racePromises);
+        populateLanguageFilter();
+        return races;
+      } catch (error) {
+        console.error('Error loading races:', error);
+        return [];
+      }
+    }
+
+    function populateLanguageFilter() {
+      const languages = new Set();
+      races.forEach(race => {
+        if (race.languages) {
+          race.languages.forEach(lang => languages.add(lang));
+        }
+      });
+
+      const select = document.getElementById('languageSelect');
+      if (select) {
+        Array.from(languages).sort().forEach(lang => {
+          const option = document.createElement('option');
+          option.value = lang;
+          option.textContent = lang;
+          select.appendChild(option);
+        });
+      }
+    }
+
+    // Async rendering functions
+    async function renderThumbnails() {
+      const grid = document.getElementById('thumbnailsGrid');
+      if (!grid) return;
+
+      const filteredRaces = filterRaces(races);
+
+      grid.innerHTML = filteredRaces.map((race, index) => {
+        const dominantAttr = getHighestAttribute(race.attributes);
+        return `
+          <div class="thumbnail" 
+               style="background-image: url('${race.imageUrl}'); border-color: ${attributeColors[dominantAttr]}; box-shadow: 0 0 15px ${attributeColors[dominantAttr]}"
+               onclick="scrollToRace(${index})">
+            <div class="thumbnail-title">${race.raceName}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function scrollToRace(index) {
+      const raceElements = document.querySelectorAll('.race-card');
+      if (raceElements[index]) {
+        raceElements[index].scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    async function renderRaces() {
+      const container = document.getElementById('racesContainer');
+      if (!container) return;
+
+      const filteredRaces = filterRaces(races);
+      const sortedRaces = sortRaces(filteredRaces);
+
+      container.innerHTML = sortedRaces.map((race, index) => {
+        const dominantAttr = getHighestAttribute(race.attributes);
+        const cardStyle = `border-color: ${attributeColors[dominantAttr]}; box-shadow: 0 0 20px ${attributeColors[dominantAttr]}`;
+
+        return `
+          <div class="race-card ${race.isAVariant ? 'variant' : ''}" style="${cardStyle}">
+            <div class="race-image" style="background-image: url('${race.imageUrl}')" data-index="${index}"></div>
+            <div class="race-content">
+              <h2 class="race-title" style="color:${attributeColors[dominantAttr]}">${race.raceName}</h2>
+              
+              <div class="meta-info">
+                <span class="meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20M2 12h20"/>
+                  </svg>
+                  Esperanza de Vida: ${race.lifeSpan}
+                </span>
+                <span class="meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                  </svg>
+                  Velocidad: ${race.movementSpeed} casillas
+                </span>
+                ${race.languages ? `
+                  <span class="meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                    Idiomas: ${race.languages.join(', ')}
+                  </span>
+                ` : ''}
+                ${race.nightVision ? `
+                  <span class="meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    Visión Nocturna
+                  </span>
+                ` : ''}
+              </div>
+
+              <p class="race-description">${race.raceDescription}</p>
+
+              <div class="attributes-grid">
+                ${Object.entries(race.attributes).map(([attr, value]) => `
+                  <div class="attribute" style="border-color: ${attributeColors[attr]}">
+                    <div class="attribute-name">${attr.charAt(0).toUpperCase() + attr.slice(1)}</div>
+                    <div class="attribute-value">${value}</div>
+                  </div>
+                `).join('')}
+              </div>
+
+              <div class="abilities">
+                ${race.abilities.map(ability => `
+                  <div class="ability">
+                    <div class="ability-name">${ability.name}</div>
+                    <div class="ability-description">${ability.description}</div>
+                  </div>
+                `).join('')}
+              </div>
+
+              <div class="size-indicator">
+                Tamaños disponibles:
+                ${Array.from({ length: 6 }, (_, i) => i + 1).map(size => `
+                  <div style="height:${size * 10}px" class="size-box ${race.sizes.includes(size) ? 'active' : ''}" 
+                       title="${getSizeLabel(size)}"></div>
+                                             ${size == 1 && race.sizes.includes(size)? '0.05</br>0.49':''}
+                                             ${size == 2 && race.sizes.includes(size)? '0.5</br>1.39':''}
+                                             ${size == 3 && race.sizes.includes(size)? '1.4</br>1.89':''}
+                                             ${size == 4 && race.sizes.includes(size)? '1.9</br>2.29':''}
+                                             ${size == 5 && race.sizes.includes(size)? '2.3</br>3.99':''}
+                                             ${size == 6 && race.sizes.includes(size)? '>4</br>':''}
+                                             `).join('')}
+              
+
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Add lightbox functionality after rendering races
+      addLightboxFunctionality();
+    }
+
+    // Lightbox functionality
+    function setupLightbox() {
+      window.closeLightbox = function () {
+        document.getElementById('lightbox').classList.remove('active');
+      };
+
+      window.changeImage = function (direction) {
+        currentIndex += direction;
+        if (currentIndex < 0) currentIndex = imageUrls.length - 1;
+        if (currentIndex >= imageUrls.length) currentIndex = 0;
+        document.getElementById('lightbox-img').src = imageUrls[currentIndex];
+      };
+
+      const lightbox = document.getElementById('lightbox');
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+    }
+
+    function addLightboxFunctionality() {
+      const images = document.querySelectorAll('.race-image');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+
+      // Reset image URLs array
+      imageUrls = [];
+
+      // Collect images and assign click events
+      images.forEach((img, index) => {
+        const url = img.style.backgroundImage.replace(/url\(["']?/, '').replace(/["']?\)$/, '');
+        imageUrls.push(url);
+        img.dataset.index = index;
+
+        img.addEventListener('click', function () {
+          openLightbox(index);
+        });
+      });
+
+      function openLightbox(index) {
+        currentIndex = index;
+        lightboxImg.src = imageUrls[currentIndex];
+        lightbox.classList.add('active');
+      }
+
+      // Add zoom and movement functionality
+      let isDragging = false;
+      let startX, startY;
+
+      lightboxImg.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        lightboxImg.style.cursor = 'grabbing';
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+        lightboxImg.style.cursor = 'grab';
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        let x = e.clientX - startX;
+        let y = e.clientY - startY;
+        lightboxImg.style.transform = `translate(${x}px, ${y}px)`;
+      });
+
+      lightboxImg.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        let scale = Math.max(0.5, Math.min(2, 1 + e.deltaY * -0.01));
+        lightboxImg.style.transform = `scale(${scale})`;
+      });
+    }
+
+    // Filter and sort functions
+    function filterRaces(races) {
+      const searchTerm = document.getElementById('searchInput')?.value?.toLowerCase() || '';
+
+      return races.filter(race => {
+        const matchesSearch = race.raceName.toLowerCase().includes(searchTerm);
+        const matchesAttributes = activeFilters.attributes.size === 0 ||
+          Array.from(activeFilters.attributes).some(attr => {
+            const value = race.attributes[attr];
+            return value && value.toString().includes('+');
+          });
+        const matchesSizes = activeFilters.sizes.size === 0 ||
+          race.sizes.some(size => activeFilters.sizes.has(size.toString()));
+        const matchesLanguages = activeFilters.languages.size === 0 ||
+          (race.languages && race.languages.some(lang => activeFilters.languages.has(lang)));
+
+        return matchesSearch && matchesAttributes && matchesSizes && matchesLanguages;
+      });
+    }
+
+    function sortRaces(races) {
+      if (!currentSort.field) return races;
+
+      return [...races].sort((a, b) => {
+        let comparison = 0;
+
+        switch (currentSort.field) {
+          case 'name':
+            comparison = a.raceName.localeCompare(b.raceName);
+            break;
+          case 'speed':
+            comparison = parseInt(a.movementSpeed) - parseInt(b.movementSpeed);
+            break;
+        }
+
+        return currentSort.direction === 'asc' ? comparison : -comparison;
+      });
+    }
+
+    // Event listeners setup
+    function setupEventListeners() {
+      // Attribute filters
+      document.getElementById('attribute-filters')?.addEventListener('click', async (e) => {
+        if (!e.target.matches('.btn')) return;
+
+        e.target.classList.toggle('active');
+        const filter = e.target.dataset.filter;
+
+        if (activeFilters.attributes.has(filter)) {
+          activeFilters.attributes.delete(filter);
+        } else {
+          activeFilters.attributes.add(filter);
+        }
+
+        await renderThumbnails();
+        await renderRaces();
+      });
+
+      // Sort select
+      document.getElementById('sortSelect')?.addEventListener('change', async (e) => {
+        const [field, direction] = e.target.value.split('-');
+        currentSort.field = field || null;
+        currentSort.direction = direction || 'asc';
+        await renderThumbnails();
+        await renderRaces();
+      });
+
+      // Size select
+      document.getElementById('sizeSelect')?.addEventListener('change', async (e) => {
+        activeFilters.sizes.clear();
+        Array.from(e.target.selectedOptions).forEach(option => {
+          activeFilters.sizes.add(option.value);
+        });
+        await renderThumbnails();
+        await renderRaces();
+      });
+
+      // Language select
+      document.getElementById('languageSelect')?.addEventListener('change', async (e) => {
+        activeFilters.languages.clear();
+        Array.from(e.target.selectedOptions).forEach(option => {
+          activeFilters.languages.add(option.value);
+        });
+        await renderThumbnails();
+        await renderRaces();
+      });
+
+      // Search input
+      document.getElementById('searchInput')?.addEventListener('input', async () => {
+        await renderThumbnails();
+        await renderRaces();
+      });
+
+      // Reset filters
+      document.getElementById('resetFilters')?.addEventListener('click', async () => {
+        // Reset active filters
+        activeFilters.attributes.clear();
+        activeFilters.sizes.clear();
+        activeFilters.languages.clear();
+        currentSort.field = null;
+        currentSort.direction = 'asc';
+
+        // Reset UI elements
+        document.querySelectorAll('.btn.active').forEach(btn => btn.classList.remove('active'));
+
+        const sortSelect = document.getElementById('sortSelect');
+        if (sortSelect) sortSelect.value = "";
+
+        const sizeSelect = document.getElementById('sizeSelect');
+        if (sizeSelect) sizeSelect.selectedIndex = -1;
+
+        const languageSelect = document.getElementById('languageSelect');
+        if (languageSelect) languageSelect.selectedIndex = -1;
+
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) searchInput.value = "";
+
+        // Re-render UI
+        await renderThumbnails();
+        await renderRaces();
+      });
+    }
+  </script>
+</body>
+
+</html>

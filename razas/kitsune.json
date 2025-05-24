@@ -1,0 +1,29 @@
+{
+    "raceName": "Kitsunes",
+    "raceDescription": "Los Kitsunes son seres extraordinariamente raros en las tierras conocidas, considerados descendientes de antiguos humanos y FoxFolks. Son reconocidos por sus colas, que aumentan en número a medida que crecen y son un símbolo de belleza y estatus entre su especie. Su capacidad innata para controlar el fuego asombra incluso a los magos más experimentados, y su atractivo físico, junto con sus rasgos bestiales sutiles, los convierte en objetivos de admiración y, en ocasiones, persecución. Según las leyendas, se cree que los Kitsunes son descendientes directos del Rey del Feywild, reforzando su vínculo con la magia y el misterio.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "attributes": {
+        "Inteligencia": "+2",
+        "Carisma": "+1"
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Garras de llamas",
+            "description": "Desgarras a tu enemigo con tus garras llameantes (2d6) y cauterizas las heridas, reduciendo la sanación del enemigo al 50%. Puede usarse una vez por descanso corto. Escala con el nivel: Nivel 1 (2d6), Nivel 4 (3d8), Nivel 8 (4d8), Nivel 12 (5d8), Nivel 16 (6d8)."
+        },
+        {
+            "name": "Transformación en Zorro",
+            "description": "Puedes transformarte en un zorro como descanso corto, siguiendo las mismas reglas que las transformaciones del Druida. En esta forma, tienes un ataque básico (2d6) con sangrado adicional (1-3 por turno) y puntos de vida equivalentes a 8 x tu nivel de Kitsune."
+        },
+        {
+            "name": "Prender",
+            "description": "Puedes prender fuego a algo que estés tocando (incluidas armas) como acción adicional, infligiendo 1d6 de daño adicional."
+        }
+    ]
+}

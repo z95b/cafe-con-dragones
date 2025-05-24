@@ -1,0 +1,29 @@
+{
+    "raceName": "Grung",
+    "raceDescription": "Los Grungs proceden de los pantanos, se alimentan de insectos y viven grandes aventuras explorando los vastos terrenos del mundo conocido. La valentía brilla en sus corazones con más intensidad según lo bajitos que sean. No hay ser más valiente y con más coraje que un Grung diminuto.",
+    "bonusRules": "+2 en Destreza, +1 en Sabiduría.",
+    "movementSpeed": "8",
+    "lifeSpan": "30-50",
+    "attributes": {
+        "Destreza": "+2",
+        "Sabiduría": "+1"
+    },
+    "sizes": [
+        2,
+        3
+    ],
+    "abilities": [
+        {
+            "name": "Lengüetazo",
+            "description": "Puedes tomar objetos con tu lengua a una distancia de 4 casillas (6m)."
+        },
+        {
+            "name": "Nube Tóxica",
+            "description": "Como acción, generas una nube apestosa a 2 casillas alrededor de ti que te seguirá. Si un enemigo empieza su turno dentro de tu nube, deberá superar una tirada de Constitución. Si la falla, perderá su turno por vomitar y tambalearse."
+        },
+        {
+            "name": "Delicia",
+            "description": "Si hay insectos en la zona donde descanses, recuperarás 1d10 de vida adicional."
+        }
+    ]
+}

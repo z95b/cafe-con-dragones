@@ -1,0 +1,33 @@
+{
+    "raceName": "🟦 VARIANTE: Shura",
+    "raceDescription": "Los Shura son producto de tragedias como una violación, un asesinato o una venganza. Nacen de madres que murieron embarazadas y cercanas a dar a luz. Estos mal llamados 'espíritus de la venganza' suelen ser personas que buscan apagar una insaciable sed de violencia que eventualmente los consume. Algunos Shura se aíslan para evitar dañar a otros, mientras que otros sucumben a su naturaleza, encontrando placer en arrebatar vidas para intentar llenar un vacío infinito. Los Shura no tienen alma, pero poseen un fuego interno que se alimenta de sus emociones.",
+    "bonusRules": "Elegir +2 en Fuerza o Destreza",
+    "movementSpeed": "7",
+    "lifeSpan": "Indefinida.",
+    "attributes": {
+        "Fuerza o Destreza": "Elegir +2",
+        "Constitución": "+2"
+    },
+    "sizes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+    ],
+    "abilities": [
+        {
+            "name": "Manejo de la Ira",
+            "description": "Al activarse, tus dos siguientes ataques hacen daño extra (1d6 de Fuerza) y tienen alcance aumentado a 2 casillas adicionales (3 a lo ancho y 2 a lo largo). Dura 3 turnos. A los niveles 5, 11 y 17, el daño aumenta en 1d6. Requiere un descanso corto para usarlo nuevamente."
+        },
+        {
+            "name": "Consumido por el Odio",
+            "description": "Cuando estás por debajo del 30% de vida, recibes los siguientes aumentos: +3 en Fuerza, +4 en Destreza y todos tus ataques activan 'Manejo de la Ira' automáticamente."
+        },
+        {
+            "name": "Sanación Espiritual",
+            "description": "Al asesinar a alguien, te curas 5 puntos de golpe (10 puntos si estás por debajo del 30% de vida). Cada asesinato suma 2 puntos permanentemente a la sanación de esta habilidad. Debes ser quien dé el golpe final, y la víctima debe ser una forma de vida grande o una criatura inteligente."
+        }
+    ]
+}

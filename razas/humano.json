@@ -1,0 +1,30 @@
+{
+    "raceName": "Humanos",
+    "raceDescription": "Los humanos son extremadamente comunes en las tierras habitadas gracias a su gran adaptación al entorno, al medio y a la propia genética. No destacan en ningún aspecto pero tampoco se quedan atrás en ninguno, cada uno tiene sus fuerzas y debilidades, ventajas y desventajas.",
+    "bonusRules": "+2 en cualquier característica (o +1 a dos características).",
+    "movementSpeed": "6",
+    "lifeSpan": "70-100",
+    "attributes": {
+        "Fuerza": "+1|2",
+        "Destreza": "+1|2",
+        "Constitución": "+1|2",
+        "Inteligencia": "+1|2",
+        "Sabiduría": "+1|2",
+        "Carisma": "+1|2"
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Hibridación",
+            "description": "Los humanos pueden mezclarse genéticamente con cualquier otra raza humanoide conocida (exceptuando algunos casos)."
+        },
+        {
+            "name": "Versatilidad",
+            "description": "A nivel 1 obtienes un aumento de característica (+2) para distribuir como tú quieras. También eliges un arma, artefacto, herramientas o idioma en el que ser competente."
+        }
+    ]
+}

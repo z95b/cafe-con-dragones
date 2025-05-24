@@ -1,0 +1,52 @@
+{
+    "raceName": "Forjados",
+    "raceDescription": "Los Forjados son creaciones hechas por la mano mortal, potenciados por magia que sus creadores difícilmente pueden comprender. Estos tienen la ventaja de poder ser creados para un propósito, pudiéndose adaptar a sus expectativas. Pero, ¿acaso ese es un buen precio a pagar por la pérdida del disfrute de las cosas más sencillas?",
+    "bonusRules": "+2 en una característica elegida según el propósito de creación, +1 en Constitución.",
+    "movementSpeed": "Variable según propósito.",
+    "lifeSpan": "Indefinida, pero requieren mantenimiento regular.",
+    "attributes": {
+        "Constitución": "+1",
+        "Selección de Propósito": "+2"
+    
+       
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Armadura Corporal",
+            "description": "Tu piel cuenta como una armadura ligera con la que eres competente (CA 12 + Modificador de Destreza). Puedes convertir cualquier armadura en tu Armadura Corporal, siempre y cuando seas competente con ella y alguien pueda implantarla. En ese caso, ya no añadirás tu Modificador de Destreza a tu CA."
+        },
+        {
+            "name": "Finalidad Última",
+            "description": "Obtienes habilidades específicas según el propósito para el que fuiste creado."
+        },
+        {
+            "name": "Propósito: Destreza (Movilidad)",
+            "description": "Tu velocidad base pasa a ser 7c, consigues Competencia en Acrobacias y si ya lo eres te vuelves Experto (Mod. de Comp. x2). Además, obtienes la habilidad \"Acrobacia Precisa\" que te permitirá esquivar automaticamente cualquier prueba de Destreza que no requiera de un crítico. Puedes usar este rasgo tantas veces como tu Mod. de Comp."
+        },
+        {
+            "name": "Propósito: Fuerza (Combate y Carga)",
+            "description": "Tu velocidad base pasa a ser 6c y el número que requieres para realizar un crítico con Ataques de Armas se reduce en 1. Una vez por descanso Largo, puedes cambiar el resultado de una tirada de ataque por un 20 natural (Crítico)"
+        },
+        {
+            "name": "Propósito: Constitución (Resistencia)",
+            "description": "Tu velocidad base pasa a ser 6c,. Inamovible: no puedes ser empujado ni derribado mediante la fuerza por criaturas de tu mismo tamaño o inferior y se te considera \"Grande\" sin ninguna desventaja por ello. Además, obtienes resistencia al daño Perforante (-50%) y tu CA (Clase de Armadura) puede calcularse con Constitución y no Destreza"
+        },
+        {
+            "name": "Propósito: Inteligencia (Cálculo y Conocimiento)",
+            "description": "Tu velocidad base pasa a ser 5c. Como Ritual, puedes usar el Hechizo de \"Identificar\" sin gastar ningún espacio de conjuro. Obtienes PG Temporales equivalentes a tu Mod de Int. cada vez que entras en Concentración por un Conjuro/Truco."
+        },
+        {
+            "name": "Propósito: Sabiduría (Percepción y Juicio)",
+            "description": "Tu velocidad base pasa a ser 6c. Te vuelves experto en cualquier habilidad relacionada a la Sabiduría y tienes ventaja en sus pruebas. Además, obtienes una reserva arcana curativa en tu Núcleo central representada en 5 \"Descargas de Vitalidad\" que se recuperan en un descanso Largo. Cada carga restaura 1'5 PG x Nivel al objetivo y pueden usarse varias a la vez como parte de la misma acción "
+        },
+        {
+            "name": "Propósito: Carisma (Diplomacia y Persuasión)",
+            "description": "Tu velocidad base pasa a ser 6c. Toda tirada de Persuasión, Interpretación o Intimidación que requiera un número inferior a (10 + Mod. Comp. + Mod. Carisma) se supera automaticamente. Además, una vez por descanso Corto obtienes un uso de \"Mirada intimidante\". Si el objetivo a no más de 7c que elijas no supera una Salvada de Carisma (8 + Mod. Comp. + Mod. Carism.) se verá Asustado por ti y recibirá 2d8 de Daño psíquico"
+        }
+    ]
+}

@@ -1,0 +1,60 @@
+[
+    "semihumano.json",
+    "no-muerto.json",
+
+    "humano.json",
+    "mediano.json",
+    "enano.json",
+    
+    "gnomo.json",
+    "elfo.json",
+    "draconido.json",
+    "kobold.json",
+
+    "semiorco.json",
+    "goblin.json",
+    "hobgoblin.json",
+
+    "tiefling.json",
+
+    "vedalken.json",
+    "forjado.json",
+    "githyanki.json",
+    "slime.json",
+
+    "aasimar.json",
+
+    
+    "pixie.json",
+    "drow.json",
+    "druegar.json",
+    "genasi.json",
+    "firbolg.json",
+    "goliat.json",
+    "sonar.json",
+    "dol-hara.json",
+    "lamia.json",
+    "centauro.json",
+    "kitsune.json",
+
+
+    "eftero.json",
+    "foxfolk.json",
+    "grung.json",
+    "harengon.json",
+    "insectoide.json",
+    "kenku.json",
+    "lizerin.json",
+    "locahtah.json",
+    "loxodon.json",
+    "miconido.json",
+    "minotauro.json",
+    "owlfolk.json",
+    "tabaxi.json",
+    "throthoga.json",
+    "ursoi.json",
+    "vanara.json",
+    "wolven.json",
+    "yuan-ti.json"
+
+]

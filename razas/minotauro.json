@@ -1,0 +1,24 @@
+{
+    "raceName": "Minotauro",
+    "raceDescription": "Los Minotauros son criaturas imponentes, mitad hombre y mitad toro, conocidos por su fuerza bruta y resistencia inquebrantable. Con enormes cuernos que simbolizan su ferocidad en combate, caminan con la autoridad de quienes han dominado tanto la naturaleza como su propio instinto salvaje. Aunque muchos los consideran bestias, los Minotauros poseen una rica tradición de historias y rituales, transmitidas por generaciones, que celebran su conexión con los laberintos de la vida y la lucha constante por superar cualquier obstáculo.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "attributes": {
+        "Fuerza": "+1",
+        "Constitución": "+2"
+    },
+    "sizes": [
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Embestida",
+            "description": "Como acción, puedes activar 'Embestida'. Cargas con una furia sobrenatural hacia un objetivo, avanzando hasta detenerte en un obstáculo suficientemente resistente. Los enemigos en tu camino (3 casillas de amplitud) deben realizar una salvada de Acrobacias (Destreza). Si fallan, son arrastrados hasta el final de la carga y reciben 1d8 de daño por cada objeto endeble atravesado + 1d8 por tu Modificador de Fuerza."
+        },
+        {
+            "name": "Furia de las Bestias",
+            "description": "Tienes ventaja para evitar quedar atrapado en redes u otras restricciones similares. Puedes usar una salvada de Fuerza para liberarte con facilidad."
+        }
+    ]
+}

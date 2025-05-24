@@ -1,0 +1,30 @@
+{
+    "raceName": "Micónido",
+    "raceDescription": "Los Micónidos son habitantes del subsuelo y los bosques oscuros, seres fúngicos que parecen caminar directamente desde el corazón de la tierra. Cada Micónido forma parte de una colmena unida psíquicamente, compartiendo pensamientos, emociones y recuerdos a través de esporas místicas. Aunque carecen de boca para hablar, su comunicación telepática es sorprendentemente compleja, permitiéndoles interactuar tanto con aliados como con enemigos. Su apariencia varía desde hongos brillantes y coloridos hasta formas más sombrías y cubiertas de musgo, reflejo de los ecosistemas donde nacieron. Eternos mientras su colmena persista, los Micónidos son testigos silenciosos de la naturaleza en su estado más puro.",
+    "bonusRules": "",
+    "movementSpeed": "5",
+    "attributes": {
+        "Inteligencia": "+1",
+        "Sabiduría": "+2"
+    },
+    "sizes": [
+        1,
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Pensamiento Múltiple",
+            "description": "El control mental no puede dominarte por completo; solo te desconecta temporalmente de la Colmena Central. Mientras estés desconectado, sufres un -2 en Sabiduría hasta que realices un descanso corto. Para reconectarte, necesitas una hora de meditación ininterrumpida."
+        },
+        {
+            "name": "Alimento Fúngico",
+            "description": "No necesitas comer mientras descanses en una tierra húmeda, ya que puedes absorber nutrientes directamente del entorno."
+        },
+        {
+            "name": "Esporas Cortex",
+            "description": "Puedes infectar a criaturas aliadas o enemigas con tus esporas a través de las vías respiratorias. Esto crea un enlace telepático que te permite comunicarte con ellas. Si no las infectas nuevamente en 24 horas, el enlace se pierde."
+        }
+    ]
+}

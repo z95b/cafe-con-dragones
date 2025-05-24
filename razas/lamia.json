@@ -1,0 +1,38 @@
+{
+    "raceName": "Lamia",
+    "raceDescription": "Las Lamias son criaturas imponentes que combinan características humanas y serpentinas. Aunque a menudo se las considera monstruos, muchas Lamias intentan convivir con otras razas. Sus cuerpos están diseñados para el combate y la supervivencia, y aunque su apariencia puede intimidar, poseen una capacidad única para forjar lazos con quienes logran superar su temible exterior.",
+    "bonusRules": "",
+    "movementSpeed": "5",
+    "lifeSpan": "100-150",
+    "attributes": {
+        "Fuerza": "+2",
+        "Constitución": "+1"
+    },
+    "sizes": [
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Deslizamiento",
+            "description": "Tu cuerpo serpentino te permite moverte en diagonal sin que esto aumente el gasto en casillas de movimiento. Esta habilidad te otorga una gran ventaja en espacios estrechos y en maniobras tácticas."
+        },
+        {
+            "name": "Inmovilización",
+            "description": "Usando tu cuerpo, puedes rodear a un enemigo e inmovilizarlo. Mientras esté inmovilizado, no podrá atacar, pero tú sí puedes hacerlo. Cada turno, el enemigo puede intentar liberarse lanzando una tirada de salvación de Constitución (DC = 8 + Mod. Fuerza + Mod. Competencia). Si otro enemigo te golpea, deberás realizar una tirada de salvación de Constitución para mantener el agarre. Puedes usar esta habilidad tantas veces como tu Mod. Competencia por descanso corto."
+        },
+        {
+            "name": "Mimetismo Forzoso",
+            "description": "Puedes transformar tu cola en piernas humanas o volver a tu forma serpentina a voluntad, usando tu acción adicional. Esta habilidad te permite adaptarte a diferentes situaciones sociales y de combate."
+        },
+        {
+            "name": "Siempre de Pie",
+            "description": "Si eres derribado, no pierdes la mitad de tu movimiento al levantarte, gracias a tu fuerte musculatura y equilibrio natural."
+        }
+    ],
+    "culture": {
+        "socialBehavior": "Las Lamias tienden a ser reservadas y a evitar el contacto con otras razas debido a los prejuicios que enfrentan. Sin embargo, quienes logran ganarse su confianza descubren seres leales y protectores.",
+        "appearance": "Tienen cuerpos serpentinos que varían en color y patrón, a menudo asociados con serpientes reales. Su parte superior humana es generalmente esbelta y atractiva, lo que contrasta con su imponente mitad inferior.",
+        "lifestyle": "Prefieren vivir en lugares apartados como desiertos o bosques, donde pueden cazar y prosperar sin interferencias. Sin embargo, muchas Lamias se integran en comunidades si encuentran aceptación."
+    }
+}

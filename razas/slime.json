@@ -1,0 +1,30 @@
+{
+    "raceName": "Slimes Despiertos",
+    "raceDescription": "Algunos Slimes consiguen desarrollar inteligencia tras la ingesta prolongada de materias orgánicas relacionadas con el sistema nervioso. Por desgracia, a cambio de una conciencia más avanzada, han tenido que abandonar sus poderosos ataques de ácido y disolución de materias. Aun así, son capaces de digerir materia orgánica a una velocidad considerable.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "lifeSpan": "Indefinida, mientras consuma materia orgánica regularmente.",
+    "attributes": {
+        "Constitución": "+1",
+        "Sabiduría": "+2"
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Cuerpo de Slime",
+            "description": "Puedes escurrirte entre cavidades muy pequeñas, pero tardarás en recomponerte. Además, puedes alimentarte de cualquier tipo de materia orgánica."
+        },
+        {
+            "name": "Esponjosidad",
+            "description": "Los golpes críticos te hacen solo 1.5 veces el daño normal."
+        },
+        {
+            "name": "Pegajoso",
+            "description": "Haciendo ventosa, puedes trepar por muros verticales."
+        }
+    ]
+}

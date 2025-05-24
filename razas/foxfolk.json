@@ -1,0 +1,25 @@
+{
+    "raceName": "Foxfolks",
+    "raceDescription": "Estas curiosas criaturas provenientes del Feywild cuentan con una astucia y pillería innatas. Su naturaleza suele ser caótica, buscan aventuras y no suelen tener problemas en entablar amistades con otras razas. Sin embargo, son conflictivos a la hora de reconocer figuras de autoridad como reyes, líderes de cultos o dioses, pues para ellos su único monarca es el Rey del Feywild. Este Foxfolk, tan antiguo como la misma raza, controla y manifiesta las estaciones en todos los planos de la existencia. Por esta razón, lo veneran como un dios y, una vez al año, todos los Foxfolks van a rendirle tributo o entregarle regalos. Solo un Foxfolk sabe cómo llegar a su región del Feywild, y por naturaleza cuentan como feéricos.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "lifeSpan": "80-120",
+    "attributes": {
+        "Destreza": "+2",
+        "Carisma": "+1"
+    },
+    "sizes": [
+        2,
+        3
+    ],
+    "abilities": [
+        {
+            "name": "Semejanzas al Monarca",
+            "description": "Obtienes competencia en las habilidades Perspicacia y Juego de Manos."
+        },
+        {
+            "name": "Maestro de Mentirosos",
+            "description": "Tus engaños tienen ventaja si el Master considera que tu mentira es convincente."
+        }
+    ]
+}

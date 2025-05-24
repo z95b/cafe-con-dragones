@@ -1,0 +1,30 @@
+{
+    "raceName": "Owlers",
+    "raceDescription": "Los Owlfolk son una raza sabia y ágil, conocidos por su gran percepción y habilidades naturales que reflejan sus características aviares. Sus cabezas giratorias les otorgan ventajas únicas en diversas situaciones.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "lifeSpan": "70-120",
+    "attributes": {
+        "Destreza": "+1",
+        "Sabiduría": "+2"
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Giro Completo",
+            "description": "Puedes rotar tu cabeza 359º, lo que te otorga Competencia en Percepción, o Experto si ya eres Competente en esta habilidad."
+        },
+        {
+            "name": "Caída de Pluma",
+            "description": "El daño por caída se reduce en un 50% y caes más lentamente, minimizando el impacto."
+        },
+        {
+            "name": "Visión en la Oscuridad",
+            "description": "Puedes ver en la oscuridad a una distancia considerable, lo que te permite moverte y actuar eficazmente en condiciones de poca luz."
+        }
+    ]
+}

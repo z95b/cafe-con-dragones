@@ -1,0 +1,29 @@
+{
+    "raceName": "Harengon",
+    "raceDescription": "Los Harengon son una raza que no se especializa en el combate directo. Son excelentes arqueros, ágiles y resistentes, aunque carecen de habilidades para destacar en el arte marcial o la fuerza bruta. Su agilidad y destreza los convierten en aliados valiosos en situaciones estratégicas.",
+    "bonusRules": "",
+    "movementSpeed": "7",
+    "lifeSpan": "70-100",
+    "attributes": {
+        "Destreza": "+3"
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Sentidos Agudizados",
+            "description": "Obtienes competencia en Percepción, enfocada en estímulos acústicos."
+        },
+        {
+            "name": "Suerte Feérica",
+            "description": "Posees 3 puntos de Suerte que se recuperan con descansos largos. Puedes gastar un punto para repetir una tirada hecha por ti o dirigida hacia ti (ataque, salvación, característica, etc.). Solo puede usarse una vez por tirada."
+        },
+        {
+            "name": "Salto Aumentado",
+            "description": "Puedes saltar más alto y/o más lejos de lo normal, aumentando significativamente tu capacidad de movimiento vertical y horizontal."
+        }
+    ]
+}

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Menu</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Spectral:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #8B0000;
+            --secondary-color: #D4AF37;
+            --text-color: #333;
+            --light-text: #F5F5DC;
+            --menu-bg: rgba(30, 30, 30, 0.85);
+            --button-bg: rgba(40, 30, 20, 0.9);
+            --button-hover: rgba(80, 60, 40, 0.95);
+            --category-active: #8B0000;
+            --category-hover: #6B0000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Spectral', serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Background Carousel */
+        .background-carousel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .carousel-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .carousel-image.active {
+            opacity: 1;
+        }
+
+        /* Content Layout */
+        .content {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-family: 'MedievalSharp', cursive;
+            font-size: 3.5rem;
+            color: var(--light-text);
+            margin-bottom: 0.2em;
+            letter-spacing: 2px;
+
+        }
+
+        .subtitle {
+            font-size: 1.6rem;
+            color: var(--secondary-color);
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        /* Menu Container */
+        .menu-container {
+            background-color: var(--menu-bg);
+            border-radius: 10px;
+            padding: 20px;
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+            border: 2px solid var(--secondary-color);
+            overflow: hidden;
+        }
+
+        /* Categories */
+        .categories-container {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        .categories {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .category {
+            background-color: rgba(0, 0, 0, 0.3);
+            color: var(--light-text);
+            padding: 1rem 2rem;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: 1000;
+            font-size: medium;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .category:hover {
+            background-color: var(--category-hover);
+            border-color: var(--secondary-color);
+        }
+
+        .category.active {
+            background-color: var(--category-active);
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Buttons Container */
+        .buttons-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            max-height: 60vh;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        /* Custom Scrollbar */
+        .buttons-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .buttons-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .buttons-container::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 10px;
+        }
+
+        /* Button Styling */
+        .menu-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--button-bg);
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 25px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-size: larger;
+            min-height: 70px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .menu-button:hover {
+            background-color: var(--button-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-color: var(--secondary-color);
+        }
+
+        .menu-button:hover::before {
+            opacity: 1;
+        }
+
+        .menu-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.2), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-button span {
+            position: relative;
+            z-index: 1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--light-text);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Loading Indicator */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            color: var(--light-text);
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--secondary-color);
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 5.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.4rem;
+
+            }
+
+            .menu-container {
+                width: 95%;
+                padding: 15px;
+            }
+
+            .buttons-container {
+                grid-template-columns: 1fr;
+                max-height: 50vh;
+            }
+
+            .category {
+                padding: 10px 20px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .menu-container {
+                padding: 10px;
+            }
+
+            .categories {
+                gap: 5px;
+            }
+
+            .category {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+
+            .menu-button span {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-carousel">
+        <!-- Carousel images will be loaded here by JavaScript -->
+    </div>
+
+    <div class="content">
+        <header>
+            <h1>CAFÉ CON DRAGONES</h1>
+
+
+        </header>
+
+        <main class="menu-container">
+            <div class="categories-container">
+                <ul id="categories" class="categories"></ul>
+            </div>
+
+            <div id="buttons-container" class="buttons-container">
+                <!-- Buttons will be loaded here from CSV -->
+            </div>
+        </main>
+
+        <footer>
+            <p class="subtitle">Creador y Master <code>TobiiOwO</code></p>
+            <p class="subtitle">Web desarrollada por <code>xLatte</code></p>
+        </footer>
+    </div>
+
+    <!-- Loading indicator -->
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Está cargando... ¿Que esperas que diga aquí?🥺 </p>
+    </div>
+
+    <script>
+        /**
+ * Carousel functionality for the D&D menu background
+ */
+        (function () {
+            const carouselContainer = document.querySelector('.background-carousel');
+            const TOTAL_IMAGES = 10;
+            const TRANSITION_DELAY = 5000; // Time between image changes (5 seconds)
+            let currentImageIndex = 0;
+            let images = [];
+
+            /**
+             * Initialize the carousel with images
+             */
+            function initCarousel() {
+                // Create image elements for all carousel images
+                for (let i = 0; i < TOTAL_IMAGES; i++) {
+                    const img = document.createElement('img');
+                    img.src = `./carrusel/${i}.png`;
+                    img.alt = `D&D Background ${i + 1}`;
+                    img.className = 'carousel-image';
+
+                    // Add loading event to track when images are ready
+                    img.addEventListener('load', () => {
+                        // Only mark as loaded if the image actually loaded successfully
+                        if (img.complete && img.naturalHeight !== 0) {
+                            img.dataset.loaded = 'true';
+                        }
+                    });
+
+                    img.addEventListener('error', () => {
+                        console.warn(`Failed to load image: ./carrusel/${i}.png`);
+                        img.dataset.error = 'true';
+                    });
+
+                    carouselContainer.appendChild(img);
+                    images.push(img);
+                }
+
+                // Start with the first image
+                if (images.length > 0) {
+                    images[0].classList.add('active');
+                }
+
+                // Start the carousel rotation
+                startCarousel();
+            }
+
+            /**
+             * Start the carousel rotation
+             */
+            function startCarousel() {
+                setInterval(() => {
+                    // Remove active class from current image
+                    images[currentImageIndex].classList.remove('active');
+
+                    // Move to next image or loop back to first
+                    currentImageIndex = (currentImageIndex + 1) % TOTAL_IMAGES;
+
+                    // Add active class to new current image
+                    images[currentImageIndex].classList.add('active');
+                }, TRANSITION_DELAY);
+            }
+
+            /**
+             * Check if all images are loaded or handle fallback
+             */
+            function checkImagesLoaded() {
+                // Count loaded images
+                const loadedCount = images.filter(img => img.dataset.loaded === 'true').length;
+                const errorCount = images.filter(img => img.dataset.error === 'true').length;
+
+                // If all images are accounted for (either loaded or failed)
+                if (loadedCount + errorCount >= TOTAL_IMAGES) {
+                    // Hide loading screen
+                    document.getElementById('loading').style.display = 'none';
+                } else {
+                    // Check again after a short delay
+                    setTimeout(checkImagesLoaded, 200);
+                }
+            }
+
+            // Initialize the carousel when the page loads
+            window.addEventListener('load', () => {
+                initCarousel();
+
+                // Set a timeout to hide loader even if some images fail to load
+                setTimeout(() => {
+                    document.getElementById('loading').style.display = 'none';
+                }, 5000); // 5 second failsafe
+
+                // Start checking if images are loaded
+                setTimeout(checkImagesLoaded, 500);
+            });
+        })();
+    </script>
+    <script>
+        /**
+ * Menu system for D&D resources
+ */
+        (function () {
+            // DOM Elements
+            const categoriesContainer = document.getElementById('categories');
+            const buttonsContainer = document.getElementById('buttons-container');
+            let activeCategory = null;
+            let buttonData = [];
+
+            /**
+             * Initialize the menu system
+             */
+            async function initMenu() {
+                try {
+                    // Load button data from CSV
+                    buttonData = await loadButtonsFromCSV();
+
+                    // Extract unique categories
+                    const categories = [...new Set(buttonData.map(button => button.category))];
+
+                    // Render categories
+                    renderCategories(categories);
+
+                    // Set first category as active by default
+                    if (categories.length > 0) {
+                        setActiveCategory(categories[0]);
+                    }
+
+                } catch (error) {
+                    console.error('Failed to initialize menu:', error);
+                    // Show error message to user
+                    buttonsContainer.innerHTML = `
+                <div class="error-message">
+                    <p>Failed to load menu data. Please try refreshing the page.</p>
+                    <p>Error: ${error.message}</p>
+                </div>
+            `;
+                }
+            }
+
+            /**
+             * Load button data from CSV file
+             */
+            async function loadButtonsFromCSV() {
+                try {
+                    const response = await fetch('data/buttons.csv');
+                    if (!response.ok) {
+                        throw new Error(`Failed to load CSV: ${response.status} ${response.statusText}`);
+                    }
+
+                    const csvText = await response.text();
+                    return parseCSV(csvText);
+
+                } catch (error) {
+                    console.error('Error loading CSV:', error);
+
+                    // Fallback to sample data if CSV loading fails
+                    return [
+                        { category: "Fichas", label: "FICHA ESTÁNDAR", url: "#", action: "descargarFichaEstandar", target: "_self" },
+                        { category: "Fichas", label: "FICHA COMPACTA", url: "#", action: "descargarFichaCompacta", target: "_self" },
+                        { category: "Personajes", label: "RAZAS", url: "razas.html", target: "_blank" },
+                        { category: "Personajes", label: "CLASES", url: "https://docs.google.com/document/d/1mbq8Mv45ZaRNtPgDBH7BGb3B661Y-dpw_tD237Pb7-M/edit?usp=sharing", target: "_blank" },
+                        { category: "Personajes", label: "CASINO STATS", url: "stats.html", target: "_blank" },
+                        { category: "Items Y Magia", label: "ARMAS Y ARMADURAS", url: "https://nivel20.com/games/dnd-5/items", target: "_blank" },
+                        { category: "Items Y Magia", label: "CONJUROS Y TRUCOS", url: "https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=&level=&school=&list=&tag=&order=level", target: "_blank" },
+                        { category: "Recursos", label: "GUÍA DND", url: "reglas.html", target: "_blank" },
+                        { category: "Recursos", label: "S'ARXIU DES GOBLIN", url: "https://drive.google.com/drive/folders/1dKsxF_uaKsMfyir1W2W6BmI5C9AqkFRs", target: "_blank" },
+                        { category: "Recursos", label: "EDITAR PDF AQUI", url: "https://www.sejda.com/es/pdf-editor", target: "_blank" }
+                    ];
+                }
+            }
+
+            /**
+             * Parse CSV text into button data objects
+             */
+            function parseCSV(csvText) {
+                const lines = csvText.trim().split('\n');
+                const headers = lines[0].split(',').map(header => header.trim());
+
+                return lines.slice(1).map(line => {
+                    const values = line.split(',').map(value => value.trim());
+                    const button = {};
+
+                    headers.forEach((header, index) => {
+                        button[header] = values[index] || '';
+                    });
+
+                    return button;
+                });
+            }
+
+            /**
+             * Render category tabs
+             */
+            function renderCategories(categories) {
+                categoriesContainer.innerHTML = '';
+
+                categories.forEach(category => {
+                    const li = document.createElement('li');
+                    li.textContent = category;
+                    li.className = 'category';
+                    li.dataset.category = category;
+
+                    li.addEventListener('click', () => {
+                        setActiveCategory(category);
+                    });
+
+                    categoriesContainer.appendChild(li);
+                });
+            }
+
+            /**
+             * Set active category and display related buttons
+             */
+            function setActiveCategory(category) {
+                // Update active class on category tabs
+                document.querySelectorAll('.category').forEach(el => {
+                    if (el.dataset.category === category) {
+                        el.classList.add('active');
+                    } else {
+                        el.classList.remove('active');
+                    }
+                });
+
+                // Store active category
+                activeCategory = category;
+
+                // Filter buttons for this category
+                const categoryButtons = buttonData.filter(button => button.category === category);
+
+                // Render buttons
+                renderButtons(categoryButtons);
+            }
+
+            /**
+             * Render buttons for the active category
+             */
+            function renderButtons(buttons) {
+                // Clear current buttons
+                buttonsContainer.innerHTML = '';
+
+                // Add buttons with fade-in effect
+                buttons.forEach((button, index) => {
+                    const buttonElement = document.createElement('a');
+                    buttonElement.href = button.url || '#';
+                    buttonElement.className = 'menu-button';
+                    buttonElement.style.animationDelay = `${index * 0.1}s`;
+
+                    // Set target if specified
+                    if (button.target) {
+                        buttonElement.target = button.target;
+                    }
+
+                    // Set onclick action if specified
+                    if (button.action) {
+                        buttonElement.setAttribute('onclick', `${button.action}()`);
+                    }
+
+                    // Set button label
+                    const span = document.createElement('span');
+                    span.textContent = button.label;
+                    buttonElement.appendChild(span);
+
+                    // Add to container
+                    buttonsContainer.appendChild(buttonElement);
+                });
+            }
+
+            // Initialize menu when DOM is loaded
+            document.addEventListener('DOMContentLoaded', initMenu);
+        })();
+    </script>
+    <script>
+        /**
+ * Utility functions for D&D menu
+ */
+
+        /**
+         * Download character sheet
+         * Function referenced in the menu buttons
+         */
+        function descargarFichaEstandar() {
+            // URL of the character sheet file
+            const fichaUrl = 'd&d.pdf';
+
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = fichaUrl;
+            link.download = 'd&d.pdf';
+
+            // Append to the document, click it, and remove it
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Notify the user
+            alert('Descargando ficha de personaje...');
+        }
+
+        function descargarFichaCompacta() {
+            // URL of the character sheet file
+            const fichaUrl = 'd&p.pdf';
+
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = fichaUrl;
+            link.download = 'd&p.pdf';
+
+            // Append to the document, click it, and remove it
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Notify the user
+            alert('Descargando ficha de personaje...');
+        }
+
+        /**
+         * Handle errors gracefully
+         */
+        window.addEventListener('error', function (e) {
+            console.error('Global error caught:', e.message);
+
+            // Hide loading screen if it's still visible
+            const loadingElement = document.getElementById('loading');
+            if (loadingElement) {
+                loadingElement.style.display = 'none';
+            }
+
+            // Prevent the error from breaking the page
+            return false;
+        });
+    </script>
+</body>
+
+</html>

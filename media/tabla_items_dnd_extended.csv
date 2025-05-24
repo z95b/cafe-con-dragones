@@ -1,0 +1,48 @@
+Nombre,Tipo,Descripción,Daño,Tipo de Daño
+Arco corto,Armas (Sencilla),Arco pequeño de madera; dispara flechas a corta y media distancia.,1d6,Perforante
+Ballesta ligera,Armas (Sencilla),"Ballesta de una mano con mecanismo de disparo; tarda en recargar, efectiva a media distancia.",1d8,Perforante
+Bastón,Armas (Sencilla),Vara larga de madera usada en combate cuerpo a cuerpo; versátil para una o dos manos.,1d6,Contundente
+Clava,Armas (Sencilla),Garrote corto de madera dura; fácil de manejar en una mano.,1d4,Contundente
+Daga,Armas (Sencilla),Cuchillo corto y punzante; útil en combate cuerpo a cuerpo o lanzada a corta distancia.,1d4,Perforante
+Dardo,Armas (Sencilla),Proyectil pequeño arrojadizo (similar a un dardo de mano); se lanza con destreza a distancias cortas.,1d4,Perforante
+Gran clava,Armas (Sencilla),Garrote de gran tamaño; requiere las dos manos para blandirla y asesta golpes contundentes fuertes.,1d8,Contundente
+Hacha de mano,Armas (Sencilla),"Hacha pequeña de una mano, también arrojadiza; común como herramienta y arma de combate cercano.",1d6,Cortante
+Honda,Armas (Sencilla),Tirachinas primitivo que lanza guijarros o proyectiles pequeños; muy ligera y portátil.,1d4,Contundente
+Hoz,Armas (Sencilla),Hoz agrícola adaptada como arma corta de corte; ligera y fácil de maniobrar.,1d4,Cortante
+Jabalina,Armas (Sencilla),Lanza ligera diseñada para ser arrojada; comúnmente usada como arma de proyectil manual en distancias moderadas.,1d6,Perforante
+Lanza,Armas (Sencilla),Arma de asta corta; puede usarse con una o dos manos y también arrojarse a distancias cortas.,1d6,Perforante
+Martillo ligero,Armas (Sencilla),Martillo de mano balanceado para lanzar; efectivo como herramienta y arma arrojadiza a distancias cortas.,1d4,Contundente
+Maza,Armas (Sencilla),Mazo de guerra simple con cabeza pesada; eficaz contra armaduras gracias al daño contundente.,1d6,Contundente
+Lanza de caballería,Armas (Marcial),Lanza de caballería larga y pesada usada desde montura.,1d12,Cortante
+Látigo,Armas (Marcial),Látigo largo de cuero trenzado; permite alcanzar enemigos a cierta distancia y realizar ataques rápidos.,1d4,Cortante
+Lucero del alba,Armas (Marcial),Arma similar a un mangual con una cabeza estrellada de metal.,1d8,Perforante
+Martillo de guerra,Armas (Marcial),"Martillo pesado de guerra, potente en combate cuerpo a cuerpo.",1d8,Contundente
+Mazo de guerra,Armas (Marcial),Gran mazo de dos manos diseñado para golpear con fuerza bruta.,2d6,Contundente
+Pica,Armas (Marcial),"Pica larga usada en formaciones de combate, diseñada para alcanzar enemigos a distancia.",1d10,Perforante
+Pico de guerra,Armas (Marcial),Martillo-pico de una mano usado para golpear o perforar armaduras.,1d8,Perforante
+Red,Equipo,Red de cuerda trenzada usada para inmovilizar criaturas.,N/A,N/A
+Tridente,Armas (Marcial),Arma con tres puntas afiladas usada para ataques perforantes.,1d6,Perforante
+Armadura de bandas,Armaduras (Pesada),Armadura de bandas metálicas que ofrece gran protección.,N/A,N/A
+Cota de escamas,Armaduras (Intermedia),Cota de escamas de metal flexible con buena defensa.,N/A,N/A
+Pieles,Armaduras (Intermedia),Armadura de pieles y cuero usada por bárbaros y tribus.,N/A,N/A
+Placas y malla,Armaduras (Pesada),Placas de metal sólido con máxima protección.,N/A,N/A
+Cota de malla,Armaduras (Pesada),Cota de malla pesada de anillos metálicos.,N/A,N/A
+Cota guarnecida,Armaduras (Pesada),Armadura de anillas gruesas con menor protección.,N/A,N/A
+Escudo,Escudo,Escudo de madera o metal usado en combate.,N/A,N/A
+Herramientas de artesano,Herramientas,Herramientas de diferentes oficios.,N/A,N/A
+Herramientas de ladrón,Herramientas,Juego de ganzúas y herramientas para forzar cerraduras.,N/A,N/A
+Herramientas de navegante,Herramientas,Instrumentos de navegación como brújula y mapas.,N/A,N/A
+Kit de disfraz,Herramientas,Kit de maquillaje y disfraces.,N/A,N/A
+Kit de envenenador,Herramientas,Conjunto de materiales para preparar venenos.,N/A,N/A
+Kit de falsificación,Herramientas,Materiales para falsificar documentos y sellos.,N/A,N/A
+Herramientas de herborista,Juegos,Herramientas de recolección de hierbas y plantas.,N/A,N/A
+Set de juego,Vehículo,Juegos de mesa y azar.,N/A,N/A
+Vehículo (acuático),Vehículo,Vehículo para moverse en el agua.,N/A,N/A
+Vehículo (terrestre),Paquete,Vehículo para moverse en la tierra.,N/A,N/A
+Paquete de artista,Paquete,Equipo para artistas itinerantes.,N/A,N/A
+Paquete de diplomático,Paquete,Equipo para diplomáticos y nobles.,N/A,N/A
+Paquete de erudito,Paquete,Kit de estudio y escritura para eruditos.,N/A,N/A
+Paquete de explorador,Paquete,Equipo para exploradores al aire libre.,N/A,N/A
+Paquete de explorador de mazmorras,Paquete,Equipo para exploradores de mazmorras.,N/A,N/A
+Paquete de ladrón,Paquete,Kit de herramientas especializadas para ladrones.,N/A,N/A
+Paquete de sacerdote,N/A,Equipo de viaje para sacerdotes y clérigos.,N/A,N/A

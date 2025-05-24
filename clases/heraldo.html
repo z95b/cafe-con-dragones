@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heraldo - Clase de RPG</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: "Arial", sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            padding: 72pt;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: "Lexend", sans-serif;
+            font-weight: bold;
+        }
+
+        .title {
+            font-size: 26pt;
+            margin-bottom: 3pt;
+        }
+
+        .subtitle {
+            font-size: 15pt;
+            color: #666666;
+            margin-bottom: 16pt;
+        }
+
+        /* Tablas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20pt;
+        }
+
+        th,
+        td {
+            padding: 5pt;
+            border: 1pt solid #000000;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .table-main th {
+            width: 150.5pt;
+        }
+
+        .table-combat th,
+        .table-patron th {
+            width: 25%;
+        }
+
+        /* Enlaces */
+        a {
+            color: #1155cc;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        /* Clases específicas */
+        .c23 {
+            background-color: #ffffff;
+            padding: 72pt;
+        }
+
+        .c8 {
+            font-weight: bold;
+            font-family: "Lexend";
+        }
+
+        .c3 {
+            font-size: 11pt;
+            font-family: "Arial";
+        }
+
+        .spells-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .spell-button {
+            background-color: #1155cc;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .spell-button:hover {
+            background-color: #0a3d8a;
+        }
+    </style>
+</head>
+
+<body class="c23">
+    <!-- Encabezado -->
+    <header>
+        <h1 class="title">Heraldo</h1>
+        <p class="subtitle">"Recé a mi Diosa durante todas las lunas de media década para implorarle algo de pan para
+            quienes amaba y nunca recibí nada. Mi amo respondió con tan solo rogar su nombre"</p>
+    </header>
+
+    <!-- Sección de características principales -->
+    <section>
+        <h2>Características principales</h2>
+        <table class="table-main">
+            <tr>
+                <th>Dados de golpe:</th>
+                <td>1d10 + Constitución<br>Vida inicial: 10 + Constitución</td>
+            </tr>
+            <tr>
+                <th>Competencias en Armaduras:</th>
+                <td>Armaduras Ligeras, Medias y Escudos</td>
+            </tr>
+            <tr>
+                <th>Competencias en Armas:</th>
+                <td>Armas Sencillas / Marciales</td>
+            </tr>
+            <tr>
+                <th>Competencias en Herramientas:</th>
+                <td>Ninguna</td>
+            </tr>
+            <tr>
+                <th>Competencias en Salvadas:</th>
+                <td>Fuerza / Carisma</td>
+            </tr>
+            <tr>
+                <th>Habilidades:</th>
+                <td>
+                    Obtienes una por tu patrón y escoges 2 más entre:<br>
+                    - Acrobacias (Patrón: Diablo)<br>
+                    - Iniciativa<br>
+                    - Atletismo<br>
+                    - Historia (Patrón: Gran Antiguo)<br>
+                    - Intimidación (Patrón: Dragón Anciano)<br>
+                    - Percepción<br>
+                    - Perspicacia (Patrón: Señor Feérico)<br>
+                    - Arcano
+                </td>
+            </tr>
+            <tr>
+                <th>Aptitud mágica:</th>
+                <td>Carisma o Inteligencia</td>
+            </tr>
+            <tr>
+                <th>Mejoras de Característica:</th>
+                <td>4, 8, 12, 16, 19</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Imagen -->
+    <section>
+        <img src="media/image1.png" alt="Imagen de Heraldo" style="width: 100%; max-width: 587px; height: auto;">
+    </section>
+
+    <!-- Sección de estilos de combate -->
+    <section>
+        <h2>Estilos de combate (Nivel 2)</h2>
+        <table class="table-combat">
+            <tr>
+                <th>Combate con Armas a dos Manos</th>
+                <th>Combate a dos Manos</th>
+            </tr>
+            <tr>
+                <td>Añades tu modificador de ataque al daño de tu segunda arma</td>
+                <td>Si sacas 1 o 2 en alguno de los dados de daño, puedes re-lanzar un dado a tu elección</td>
+            </tr>
+            <tr>
+                <th>Guerrero elemental</th>
+                <th>Duelo</th>
+            </tr>
+            <tr>
+                <td>+2 al CA ante ataques mágicos si llevas armadura</td>
+                <td>Si solo usas una arma de una mano, tienes un +2 en tiradas de ataque</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Sección de patrones sobrenaturales -->
+    <section>
+        <h2>Patrón sobrenatural</h2>
+        <table class="table-patron">
+            <tr>
+                <th>Diablo</th>
+                <th>Gran Antiguo</th>
+                <th>Señor Feérico</th>
+                <th>Dragón Anciano</th>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Nivel 1</h3>
+                    <p><strong>Telas Infernales:</strong> Te vuelves resistente al daño de Fuego y los venenos no
+                        mágicos no te afectan.</p>
+                </td>
+                <td>
+                    <h3>Nivel 1</h3>
+                    <p><strong>Manto de Estrellas:</strong> Una vez por descanso corto, puedes envolverte en una
+                        apariencia cósmica otorgada por tu Patrón.</p>
+                </td>
+                <td>
+                    <h3>Nivel 1</h3>
+                    <p><strong>Susurros Endulzantes:</strong> Puedes "Encantar" a un Objetivo susurrándole unas palabras
+                        al oído.</p>
+                </td>
+                <td>
+                    <h3>Nivel 1</h3>
+                    <p><strong>Piel Escamosa:</strong> Tu CA siempre que no lleves armadura es de 13 + Destreza.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Nivel 6</h3>
+                    <p><strong>Arrancar el alma:</strong> Si das el golpe de gracia a un objetivo (Bajas sus PG a 0),
+                        obtienes una Acción ese turno.</p>
+                </td>
+                <td>
+                    <h3>Nivel 6</h3>
+                    <p><strong>Conocimiento Ancestral:</strong> Elige 2 habilidades en las que ser competente y 1 que ya
+                        tengas para volverte Experto.</p>
+                </td>
+                <td>
+                    <h3>Nivel 6</h3>
+                    <p><strong>Señor Natural:</strong> Obtienes la capacidad de hablar con los animales y las plantas.
+                    </p>
+                </td>
+                <td>
+                    <h3>Nivel 6</h3>
+                    <p><strong>Amo de los Cielos:</strong> Como Acción Adicional, puedes desplegar tus alas para volar o
+                        replegarlas.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Nivel 10</h3>
+                    <p><strong>Cadenas de Condena:</strong> Obtienes un arma que siempre podrás usar con 5c de rango:
+                        "Las Cadenas de Condena".</p>
+                </td>
+                <td>
+                    <h3>Nivel 10</h3>
+                    <p><strong>Deflección arcana:</strong> Una vez por descanso Corto, como reacción puedes reflectar un
+                        conjuro de tipo proyectil.</p>
+                </td>
+                <td>
+                    <h3>Nivel 10</h3>
+                    <p><strong>Toque Feérico:</strong> Una vez por Descanso Corto puedes tocar a un aliado o enemigo
+                        para realizarle uno de los siguientes efectos.</p>
+                </td>
+                <td>
+                    <h3>Nivel 10</h3>
+                    <p><strong>Aspecto terrorífico:</strong> Una vez por Descanso largo puedes pedir a tu Amo que te
+                        ofrezca su protección temporalmente.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Nivel 14</h3>
+                    <p><strong>Cambio de Plano:</strong> Una vez cada 24h puedes cambiar de Plano, siempre y cuando sea
+                        entre el plano Terrenal y Planos Inferiores.</p>
+                </td>
+                <td>
+                    <h3>Nivel 14</h3>
+                    <p><strong>Control Hipnótico:</strong> Una vez por descanso corto, puedes emplear "Dominar persona"
+                        sobre un objetivo.</p>
+                </td>
+                <td>
+                    <h3>Nivel 14</h3>
+                    <p><strong>Entorno Favorable:</strong> Con un solo aplauso, el bosque se hace presente allá donde
+                        estés.</p>
+                </td>
+                <td>
+                    <h3>Nivel 14</h3>
+                    <p><strong>Furia de Dragón:</strong> Una vez por descanso Largo, puedes adentrarte en un estado de
+                        Furia.</p>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Sección de pactos y beneficios -->
+    <!-- Sección de pactos y beneficios -->
+    <section>
+        <h2>Pactos y Beneficios (Nivel 3)</h2>
+        <table class="table-patron">
+            <tr>
+                <th>Pacto del Conjurador</th>
+                <th>Pacto del Filo</th>
+                <th>Pacto del Destello</th>
+                <th>Pacto de la Bestia</th>
+            </tr>
+            <tr>
+                <td>
+                    <p><strong>"Con mi poder, moldear la magia a mi imagen y semejanza será una minucia"</strong></p>
+                    <p>Obtienes 1 Espacio de Conjuro Extra, 2 trucos más y la máxima característica para tu Aptitud
+                        Mágica aumenta en 2 (puedes tener 22 de Carisma, +7).</p>
+                    <p>Además, obtienes +2 en dicha característica.</p>
+                    <p>Dependiendo de tu Patrón, obtendrás una <a
+                            href="https://docs.google.com/document/d/1pWZzwMfHldnaOa2z-5PZ7pjCEBA1Gc5WsSwTtgbkI-8/edit?usp=sharing">Lista
+                            de Conjuros Extendida</a>.</p>
+                </td>
+                <td>
+                    <p><strong>"Con mi poder, no habrá asesinato que no puedas lograr"</strong></p>
+                    <p>Obtienes una o dos armas a tu elección. Si eliges 2, estas han de ser Duales (Ej: 2 Dagas).</p>
+                    <p><strong>Esta arma estará vinculada a ti</strong>, otorgándote los siguientes beneficios siempre
+                        que la empuñes:</p>
+                    <ul>
+                        <li>No se te puede desarmar.</li>
+                        <li>Puedes Desconvocar y Convocar tu arma a voluntad gastando tu Acción Adicional incluso a
+                            través de Planos de Existencia.</li>
+                        <li>Eres competente con ella.</li>
+                    </ul>
+                    <p><strong>Dependiendo de tu Patrón, el arma obtiene uno de los siguientes beneficios:</strong></p>
+                    <p><strong>Diablo:</strong> Tu arma puede tener dos formas de armas diferentes, alternando ambas
+                        formas con tu Acción Adicional (Ej: Martillo de Guerra y Espadón). Además, realiza 1d4 de Daño
+                        de Fuego extra.</p>
+                    <p><strong>Señor Feérico:</strong> Tu arma es extrañamente bella y precisa. Obtienes la habilidad
+                        “Exponer Vulnerabilidad” que puedes usar tras cada Descanso Corto. Durante 10T (1 Minuto), el
+                        objetivo se vuelve Vulnerable al Daño Cortante, Contundente o Perforante (Elige 1). Si son
+                        Inmunes, puedes elegir entre que se vuelvan “Resistentes” o obligar a una salvada de
+                        Constitución. Además, el número que requieres para realizar un crítico disminuye en 1.</p>
+                    <p><strong>El Gran Antiguo:</strong> Tu arma causa el estado “Náuseas” a los objetivos que no
+                        superen una Salvada de Constitución cada vez que los golpeas, otorgándoles un penalizador de 1d4
+                        a su CA y Salvadas durante 2 Turnos. Un crítico provoca “Náuseas graves”, haciendo que pierdan
+                        su turno si no superan una tirada de Constitución.</p>
+                    <p><strong>Dragón Anciano:</strong> Cuando ataques a un enemigo mientras estés rodeado por 2 o más
+                        criaturas hostiles, podrás usar tu Acción Adicional para atacar a ese segundo Objetivo. Además,
+                        realizas 1d6 de Daño extra del tipo que sea tu Amo (Hielo, Fuego, Ácido…).</p>
+                </td>
+                <td>
+                    <p><strong>"Con mi poder, no habrá ojos que te puedan ver"</strong></p>
+                    <p>Obtienes una velocidad sobrehumana. Tu movimiento base aumenta en 3C y tu CA aumenta en 1 siempre
+                        que no lleves armadura Media.</p>
+                    <p>Además, obtienes la habilidad “Acelerón increíble”, la cual te permitirá avanzar hasta un máximo
+                        de 9C (13.5m) en cualquier dirección (Vertical también) como Acción Adicional.</p>
+                    <p>Tu patrón otorga habilidades extra a tu “Acelerón Increíble” y puedes usar tantos Acelerones como
+                        tu Mod. Carisma / Int por Descanso Largo.</p>
+                    <p><strong>Diablo:</strong> Al realizar tu “Acelerón Increíble” dejas tras de ti una estela de fuego
+                        Infernal. Este fuego dura 3 Turnos, ignora la Inmunidad al Fuego y produce 2d8 de daño de Fuego
+                        a los objetivos que inicien su turno dentro del área de fuego, además de que se considera
+                        “Terreno difícil”. Si alguien muere por el fuego, te curas 1d8.</p>
+                    <p><strong>Señor Feérico:</strong> Al realizar tu “Acelerón Increíble” realizas un ataque con tu
+                        arma sobre el primer objetivo que impactes en tu camino y te vuelves invisible durante 2T,
+                        teletransportándote a una distancia máxima de 4c.</p>
+                    <p><strong>El Gran Antiguo:</strong> Además de tu “Acelerón Increíble” obtienes “Puerta Espacio
+                        temporal”. En un rango de 4C (5m) puedes crear un portal y a un máximo de 20C (30m) puedes crear
+                        un segundo. Toda criatura, objeto o ente que tu quieras puede pasar libremente por ambos
+                        portales, saliendo de un lado a otro sin gastar ningún recurso. El portal dura abierto 30
+                        Segundos (5T) y requiere Concentración para ser usado.</p>
+                    <p><strong>Dragón Anciano:</strong> Al utilizar “Acelerón Increíble”, arremetes contra todos los
+                        enemigos frente a ti recubierto por una capa de magia dracónida, derribándolos si no superan una
+                        prueba de Fuerza. Realizas 1d4 de daño por cada puntuación de Carisma / Inteligencia que poseas
+                        (Ej: +5 en Inteligencia = 5d4 de daño de Fuerza). Este acelerón posee la capacidad de atravesar
+                        muros gruesos de ladrillo sin resultar herido y al finalizar el movimiento, obtienes +5 a tu CA
+                        durante 2T.</p>
+                </td>
+                <td>
+                    <p><strong>"Con mi poder, la carne es solo arcilla"</strong></p>
+                    <p>Obtienes la capacidad de gastar tu acción para convertirte en una Criatura terrible 1 vez cada
+                        Descanso Corto. Adoptas su forma, sus habilidades y sus PG’s propios como la habilidad del
+                        Druida. Tu tamaño se considera “Grande”.</p>
+                    <p><strong>Diablo:</strong> Obtienes una forma demoníaca durante 10T al chasquear los dedos. Te
+                        vuelves inmune al daño de fuego, obtienes (Lvl de Heraldo x 10) PG’s y tus Garras realizan 2d6
+                        de daño cortante + 2d6 De Fuego. La forma de esta Bestia es a elección del creador. Tu CA puede
+                        ser el de tu armadura.</p>
+                    <p><strong>Señor Feérico:</strong> Obtienes una forma Feérica durante 1H al chasquear los dedos.
+                        Puedes convertirte en un “Yeth Hound” (Sabueso Yeth) con las siguientes habilidades:</p>
+                    <ul>
+                        <li>Puedes volverte invisible como Acción y Concentración. Permaneces invisible todo el tiempo
+                            que necesites.</li>
+                        <li>Tienes (Lvl Heraldo x 8) PG’s.</li>
+                        <li>Cada vez que te expones a la luz solar, recibes 5d10 de daño Radiante siempre y cuando no
+                            estés Visible.</li>
+                        <li>1d6 (Fuerza) por Ataque.</li>
+                        <li>Velocidad base: 8C.</li>
+                    </ul>
+                    <p><strong>Aullido aterrador:</strong> El Yelk Hound tiene la capacidad de producir un grito
+                        aterrador que asusta a todas las criaturas que no superen una salvada de Sabiduría.</p>
+                    <p><strong>El Gran Antiguo:</strong> Obtienes una forma Cósmica durante 10T al chasquear los dedos.
+                        Esta forma consiste en una grieta dimensional de la que surgen horrores inimaginables. Obtienes
+                        las siguientes habilidades:</p>
+                    <ul>
+                        <li>Tus ataques producen 2d6 de daño Psíquico y tienes 2 casillas de alcance.</li>
+                        <li>Eres Inmune al daño psíquico.</li>
+                        <li>Como acción, puedes obligar a un objetivo a máximo 8c a realizar una prueba de Carisma. Si
+                            la falla, recibirá el estado de “Aturdido”. Falle o Supere la prueba, todo aquel que te
+                            ataque tiene ventaja en tiradas de ataque.</li>
+                    </ul>
+                    <p><strong>Dragón Anciano:</strong> Obtienes una forma Dracónida durante 1h al chasquear los dedos.
+                        Obtienes las siguientes habilidades:</p>
+                    <ul>
+                        <li>Tu tamaño se considera “Enorme” (3 / 6m), lo que implica que tus compañeros pueden montarte.
+                        </li>
+                        <li>Obtienes alas para volar.</li>
+                        <li>Obtienes un aliento Elemental del tipo de Dragón que sea tu Amo (4d6 + Salvada de Destreza,
+                            si la superan reciben la mitad) que puedes usar como acción.</li>
+                        <li>No se te puede restringir o inmovilizar por medio de la fuerza.</li>
+                        <li>Tu ataque básico es con tus garras (3d6 + Salvada de Destreza, si la superan reciben la
+                            mitad).</li>
+                        <li>Obtienes (Lvl Heraldo x 10) PG’s.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Sección de habilidades del Heraldo -->
+    <section>
+        <h2>Habilidades del Heraldo</h2>
+        <table class="table-abilities">
+            <tr>
+                <th>Nivel 1</th>
+                <td>
+                    <p><strong>Patrón sobrenatural:</strong> Tu patrón determina tus habilidades y Conjuros.</p>
+                    <p><strong>Poderes sobrenaturales:</strong> Obtienes una cantidad de trucos y espacios de conjuro
+                        determinados en la tabla de la clase.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Nivel 3</th>
+                <td>
+                    <p><strong>Pacto:</strong> Adquieres los beneficios del Pacto que has elegido.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Nivel 5</th>
+                <td>
+                    <p><strong>Ataque adicional (Lvl 5):</strong> Puedes atacar 2 veces como parte de la misma acción.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th>Nivel 11</th>
+                <td>
+                    <p><strong>Suplicar a tu amo:</strong> Una vez por descanso Largo puedes suplicar a tu Amo que te
+                        brinde su ayuda como acción.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Nivel 15</th>
+                <td>
+                    <p><strong>Ataque adicional II:</strong> Puedes atacar 3 veces como parte de la misma acción.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Nivel 20</th>
+                <td>
+                    <p><strong>Verse superado:</strong> Una vez por mes, puedes llamar a tu amo para que te brinde su
+                        ayuda.</p>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+
+    <!-- Sección de beneficios de servidumbre -->
+    <section>
+        <h2>Beneficios de Servidumbre</h2>
+        <table class="table-patron">
+            <tr>
+                <th>Regeneración sorpresiva</th>
+                <th>Castigo piadoso</th>
+                <th>Supra-Veloz</th>
+            </tr>
+            <tr>
+                <td>Una vez por descanso corto puedes curarte 3 PG’s x Nivel como acción Adicional.</td>
+                <td>Puedes lanzar “Risa Horrible de Tasha” como acción sin coste adicional una vez por descanso Corto.
+                </td>
+                <td>Tu Movimiento base aumenta 3C.</td>
+            </tr>
+            <tr>
+                <th>Golpe Sobrenatural</th>
+                <th>Magia otorgada</th>
+                <th>Desvelar debilidades</th>
+            </tr>
+            <tr>
+                <td>Los afectados por un tiro certero con “Descarga Sobrenatural” serán empujados 2c (3m) si no superan
+                    una salvada de Constitución.</td>
+                <td>Al gastar un espacio de conjuro recibes 1d12 de Vida extra Temporal.</td>
+                <td>Una vez cada Descanso Corto puedes marcar a un objetivo con “Impacto Certero” como acción Adicional
+                    que se mantiene durante 2T como Concentración. Todos tus compañeros obtienen el beneficio de este
+                    Truco.</td>
+            </tr>
+            <tr>
+                <th>Sufrimiento Sobrenatural</th>
+                <th>Ojos de Gato</th>
+                <th>Derribo</th>
+            </tr>
+            <tr>
+                <td>Añades tu Mod. Carisma / Inteligencia al daño de tus Trucos.<br><strong>-Requisito: Nivel 5</strong>
+                </td>
+                <td>Obtienes visión en la Oscuridad (Mágica o No).</td>
+                <td>Solo si llevas escudo, puedes emplear tu reacción para tratar de derribar a un enemigo que te acaba
+                    de golpear con un ataque cuerpo a cuerpo. Si no supera una Salvada de Constitución cae al suelo y su
+                    turno finaliza.<br><strong>-Requisito: Nivel 5</strong></td>
+            </tr>
+            <tr>
+                <th>Expansión de Poder</th>
+                <th>Semblante Feérico</th>
+                <th>Semblante Infernal</th>
+            </tr>
+            <tr>
+                <td><strong>(Solo disponible para el Pacto del Filo)</strong><br>Una vez cada descanso Corto puedes
+                    realizar un ataque destructor con tu arma contra un objetivo. Este recibe 3d8 de Daño de Fuerza y es
+                    empujado 3c si no supera una salvada de Atletismo. Todos los enemigos hasta 6c alrededor deben
+                    realizar una Salvada de Constitución o también serán empujados lejos del origen de la
+                    honda.<br><strong>-Requisito: Nivel 7</strong></td>
+                <td><strong>(Solo disponible para el Señor Feérico)</strong><br>Obtienes experticidad en interpretación
+                    y Competencia en Persuasión.</td>
+                <td><strong>(Solo disponible para el Diablo)</strong><br>Obtienes Experticidad en Perspicacia y
+                    Competencia en Supervivencia.</td>
+            </tr>
+            <tr>
+                <th>Semblante Cósmico</th>
+                <th>Semblante Escamoso</th>
+                <th>Luz vívida</th>
+            </tr>
+            <tr>
+                <td><strong>(Solo disponible para el Gran Antiguo)</strong><br>Obtienes Experticidad en Historia y
+                    Religión.</td>
+                <td><strong>(Solo disponible para el Dragón Anciano)</strong><br>Obtienes Experticidad en Atletismo y
+                    Competencia en Salvadas de Constitución.</td>
+                <td><strong>(Solo Disponible para el Pacto del Destello)</strong><br>El próximo ataque que realices
+                    contra un objetivo otorga Ventaja al próximo ataque que tú o un aliado acerteis contra dicho
+                    objetivo.</td>
+            </tr>
+            <tr>
+                <th>Marca del mal augurio</th>
+                <th>Susurro del sepulcro</th>
+                <th>Crujir los huesos</th>
+            </tr>
+            <tr>
+                <td>Puedes lanzar “Imponer maldición” gastando un espacio de conjuro.<br><strong>(Descanso
+                        largo)</strong><br><strong>-Requisitos: Nivel 5</strong></td>
+                <td>Puedes lanzar “Hablar con los muertos” a voluntad.<br><strong>-Requisito: Nivel 9</strong></td>
+                <td>Añades tu Mod. de Carisma al Daño de tu Arma de Pacto como daño necrótico.<br><strong>-Requisito:
+                        Nivel 9</strong></td>
+            </tr>
+            <tr>
+                <th>Habla Bestial</th>
+                <th>Escultor de la Carne</th>
+                <th>Máscara de mil rostros</th>
+            </tr>
+            <tr>
+                <td>Obtienes el conjuro “Hablar con animales” como acción.</td>
+                <td>Consigues el conjuro “Polimorfar”.<br><strong>(Descanso Largo)</strong><br><strong>-Requisitos:
+                        Nivel 7</strong></td>
+                <td>Puedes lanzar “Disfrazarse” como acción.</td>
+            </tr>
+        </table>
+    </section>
+    <!-- Sección de conjuros -->
+    <section>
+        <h2>Conjuros</h2>
+
+        <!-- Trucos (Nivel 0) -->
+        <h3>Trucos (Nivel 0)</h3>
+        <div class="spells-container">
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Descarga+Sobrenatural" target="_blank"
+                class="spell-button">Descarga Sobrenatural</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Ilusi%C3%B3n+menor" target="_blank"
+                class="spell-button">Ilusión menor</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Mensaje" target="_blank"
+                class="spell-button">Mensaje</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Piedad+con+los+Moribundos" target="_blank"
+                class="spell-button">Piedad con los Moribundos</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Prestidigitaci%C3%B3n" target="_blank"
+                class="spell-button">Prestidigitación</a>
+        </div>
+
+        <!-- Trucos Extra (Subclase: Conjurador) -->
+        <h3>Trucos Extra (Subclase: Conjurador)</h3>
+        <div class="spells-container">
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Descarga+de+Fuego" target="_blank"
+                class="spell-button">Descarga de Fuego</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Luz" target="_blank"
+                class="spell-button">Luz</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Burla+da%C3%B1ina" target="_blank"
+                class="spell-button">Burla dañina</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Agarre+Electrizante" target="_blank"
+                class="spell-button">Agarre Electrizante</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Toque+Helado" target="_blank"
+                class="spell-button">Toque Helado</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Resistencia" target="_blank"
+                class="spell-button">Resistencia</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Mano+de+Mago" target="_blank"
+                class="spell-button">Mano de Mago</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Rociada+venenosa" target="_blank"
+                class="spell-button">Rociada venenosa</a>
+        </div>
+
+        <!-- Conjuros (Nivel 1) -->
+        <h3>Conjuros (Nivel 1)</h3>
+        <div class="spells-container">
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Encontrar+familiar" target="_blank"
+                class="spell-button">Encontrar familiar</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Falsa+vida" target="_blank"
+                class="spell-button">Falsa vida</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Nube+de+oscurecimiento" target="_blank"
+                class="spell-button">Nube de oscurecimiento</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Infligir+Heridas" target="_blank"
+                class="spell-button">Infligir Heridas</a>
+        </div>
+
+        <!-- Conjuros Extra Nivel 1 (Subclase: Conjurador) -->
+        <h3>Conjuros Extra Nivel 1 (Subclase: Conjurador)</h3>
+        <div class="spells-container">
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Reprensi%C3%B3n+Infernal" target="_blank"
+                class="spell-button">Reprensión Infernal</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Fuego+Fe%C3%A9rico" target="_blank"
+                class="spell-button">Fuego Feérico</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Hechizar+Persona" target="_blank"
+                class="spell-button">Hechizar Persona</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Ola+Atronadora" target="_blank"
+                class="spell-button">Ola Atronadora</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Orden+imperiosa" target="_blank"
+                class="spell-button">Orden imperiosa</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Dormir" target="_blank"
+                class="spell-button">Dormir</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Risa+Horrible+de+Tasha" target="_blank"
+                class="spell-button">Risa Horrible de Tasha</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Escudo" target="_blank"
+                class="spell-button">Escudo</a>
+        </div>
+
+        <!-- Conjuros (Nivel 2) -->
+        <h3>Conjuros (Nivel 2)</h3>
+        <div class="spells-container">
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Arma+m%C3%A1gica" target="_blank"
+                class="spell-button">Arma mágica</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Castigo+marcador" target="_blank"
+                class="spell-button">Castigo marcador</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Contorno+borroso" target="_blank"
+                class="spell-button">Contorno borroso</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Sordera+%2F+Ceguera" target="_blank"
+                class="spell-button">Sordera / Ceguera</a>
+        </div>
+
+        <!-- Conjuros Extra Nivel 2 (Subclase: Conjurador) -->
+        <h3>Conjuros Extra Nivel 2 (Subclase: Conjurador)</h3>
+        <div class="spells-container">
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Calentar+Metal" target="_blank"
+                class="spell-button">Calentar Metal</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Mensajero+Animal" target="_blank"
+                class="spell-button">Mensajero Animal</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Augurio" target="_blank"
+                class="spell-button">Augurio</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Piel+Robliza" target="_blank"
+                class="spell-button">Piel Robliza</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Rayo+Abrasador" target="_blank"
+                class="spell-button">Rayo Abrasador</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Potenciar+Caracter%C3%ADstica"
+                target="_blank" class="spell-button">Potenciar Característica</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Levitar" target="_blank"
+                class="spell-button">Levitar</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=V%C3%ADnculo+Protector" target="_blank"
+                class="spell-button">Vínculo Protector</a>
+        </div>
+
+        <!-- Conjuros (Nivel 3) -->
+        <h3>Conjuros (Nivel 3)</h3>
+        <div class="spells-container">
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Contrahechizo" target="_blank"
+                class="spell-button">Contrahechizo</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Rel%C3%A1mpago" target="_blank"
+                class="spell-button">Relámpago</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Muro+de+viento" target="_blank"
+                class="spell-button">Muro de viento</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Toque+Vamp%C3%ADrico" target="_blank"
+                class="spell-button">Toque Vampírico</a>
+        </div>
+
+        <!-- Conjuros Extra Nivel 3 (Subclase: Conjurador) -->
+        <h3>Conjuros Extra Nivel 3 (Subclase: Conjurador)</h3>
+        <div class="spells-container">
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Bola+de+Fuego" target="_blank"
+                class="spell-button">Bola de Fuego</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Esp%C3%ADritus+Guardianes" target="_blank"
+                class="spell-button">Espíritus Guardianes</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Terror" target="_blank"
+                class="spell-button">Terror</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Llamar+al+Rel%C3%A1mpago" target="_blank"
+                class="spell-button">Llamar al Relámpago</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Imponer+maldici%C3%B3n" target="_blank"
+                class="spell-button">Imponer maldición</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Clarividencia" target="_blank"
+                class="spell-button">Clarividencia</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Patr%C3%B3n+Hipn%C3%B3tico" target="_blank"
+                class="spell-button">Patrón Hipnótico</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Tormenta+de+Aguanieve" target="_blank"
+                class="spell-button">Tormenta de Aguanieve</a>
+        </div>
+
+        <!-- Conjuros (Nivel 4) -->
+        <h3>Conjuros (Nivel 4)</h3>
+        <div class="spells-container">
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Tent%C3%A1culos+negros+de+Evard"
+                target="_blank" class="spell-button">Tentáculos negros de Evard</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Puerta+Dimensional" target="_blank"
+                class="spell-button">Puerta Dimensional</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Conjurar+Elementales+Menores"
+                target="_blank" class="spell-button">Conjurar Elementales Menores</a>
+        </div>
+
+        <!-- Conjuros Extra Nivel 4 (Subclase: Conjurador) -->
+        <h3>Conjuros Extra Nivel 4 (Subclase: Conjurador)</h3>
+        <div class="spells-container">
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Escudo+de+Fuego%2FFr%C3%ADo"
+                target="_blank" class="spell-button">Escudo de Fuego/Frío</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Dominar+Bestia" target="_blank"
+                class="spell-button">Dominar Bestia</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Asesino+Fantasmal" target="_blank"
+                class="spell-button">Asesino Fantasmal</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Localizar+criatura" target="_blank"
+                class="spell-button">Localizar criatura</a>
+        </div>
+
+        <!-- Conjuros (Nivel 5) -->
+        <h3>Conjuros (Nivel 5)</h3>
+        <div class="spells-container">
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Atadura+Planar" target="_blank"
+                class="spell-button">Atadura Planar</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Inmovilizar+Monstruo" target="_blank"
+                class="spell-button">Inmovilizar Monstruo</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Golpe+Flam%C3%ADgero" target="_blank"
+                class="spell-button">Golpe Flamígero</a>
+        </div>
+        <!-- Conjuros Extra Nivel 5 (Subclase: Conjurador) -->
+        <h3>Conjuros Extra Nivel 5 (Subclase: Conjurador)</h3>
+        <div class="spells-container">
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Geas" target="_blank"
+                class="spell-button">Geas</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Ensue%C3%B1o" target="_blank"
+                class="spell-button">Ensueño</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Telequinesis" target="_blank"
+                class="spell-button">Telequinesis</a>
+            <a href="https://nivel20.com/games/dnd-5/spells?utf8=%E2%9C%93&q=Cono+de+Fr%C3%ADo" target="_blank"
+                class="spell-button">Cono de Frío</a>
+        </div>
+    </section> <!-- Pie de página -->
+    <footer>
+    </footer>
+</body>
+
+</html>

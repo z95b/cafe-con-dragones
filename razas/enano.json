@@ -1,0 +1,28 @@
+{
+    "raceName": "Enanos",
+    "raceDescription": "De baja estatura pero con una valentía a la altura de la situación. Los enanos son grandes guerreros, pero en lo que sobresalen es en su gran ingenio para sobresalir de las peores situaciones y crear grandes artilugios adelantados a su tiempo. Provenientes de las frías montañas, su carácter suele ser tosco y fuerte, siempre agradecidos de una buena jarra de sidra o alcohol acompañados de una buena pieza de carne.",
+    "lifeSpan": "",
+    "bonusRules": "",
+    "movementSpeed": 5,
+    "attributes": {
+        "Fuerza": "+1",
+        "Constitución": "+2"
+    },
+    "sizes": [
+        2
+    ],
+    "abilities": [
+        {
+            "name": "Dureza de Montaña",
+            "description": "Eres resistente al daño de veneno (-50%) y tienes ventaja en tiradas de salvación contra ser Envenenado."
+        },
+        {
+            "name": "Valentía",
+            "description": "No puedes ser Intimidado ni Asustado."
+        },
+        {
+            "name": "Hierro en la Sangre",
+            "description": "Obtienes competencia en herramientas de Herrero. Si ya posees esta competencia, la conviertes en 'Experto' (x2)."
+        }
+    ]
+}

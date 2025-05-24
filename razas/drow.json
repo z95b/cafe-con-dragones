@@ -1,0 +1,25 @@
+{
+    "raceName": "Drow",
+    "raceDescription": "Provenientes del Underdark, los elfos oscuros son la definición de rudeza y suavidad fusionadas en una sola imagen. A diferencia de sus primos lejanos de la superficie, los Drow son más toscos, más directos en sus palabras y menos dispuestos a tener tantas formalidades. Sus habilidades destacan en el uso de la magia 'negra' o 'de mala reputación', y su buen manejo en la oscuridad es constante pues se crían en el oscuro Underdark.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "lifeSpan": "700-1000",
+    "attributes": {
+        "Fuerza": "+1",
+        "Inteligencia": "+2"
+    },
+    "sizes": [
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Visión en la Oscuridad",
+            "description": "Puedes ver en la oscuridad total hasta 60 pies como si fuera luz tenue."
+        },
+        {
+            "name": "Runa del Miedo",
+            "description": "Marcas a un enemigo. Si falla una tirada de salvación de Sabiduría, ese enemigo siempre tratará de alejarse de ti, pues para él representas el mayor de sus temores."
+        }
+    ]
+}

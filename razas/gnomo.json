@@ -1,0 +1,29 @@
+{
+    "raceName": "Gnomos",
+    "raceDescription": "Seres que habitan usualmente en los bosques, utilizando grandes árboles como sus hogares. Su pequeño tamaño no los hace inofensivos, pues su gran afinidad a la magia los convierte en temibles hechiceros que no están dispuestos a que les pasen por encima. Como curiosidad, los Gnomos tienen tres nombres: motes dados por su familia, sus amistades y sus compañeros de trabajo o aventuras. Por ejemplo, un Gnomo podría llamarte 'Alfredo Cerebrito Tragalibros Zampabollos', aunque suelen usar su favorito.",
+    "bonusRules": "Gnomos de los Bosques: +1 en Sabiduría. - - - Gnomos de las Rocas: +1 en Constitución.",
+    "movementSpeed": "5",
+    "lifeSpan": "200-500",
+    "attributes": {
+        "Constitución": "+1|0",
+        "Inteligencia": "+2",
+        "Sabiduría": "+1|0"
+    },
+    "sizes": [
+        2
+    ],
+    "abilities": [
+        {
+            "name": "GNOMOS DE LOS BOSQUES: Hablar con Animales",
+            "description": " Puedes comunicarte con pequeños animales de forma mágica."
+        },
+        {
+            "name": "GNOMOS DE LAS ROCAS: Pasar a Través de Roca",
+            "description": " Puedes meterte en la roca y traspasarla lentamente (máximo 5m)."
+        },
+        {
+            "name": "Mente Rápida",
+            "description": "Tienes ventaja en todas las tiradas de salvación de Carisma, Sabiduría o Inteligencia que traten de afectar tu mente mágicamente de manera directa (Leer mentes, Encantamientos, Zona de la Verdad…)."
+        }
+    ]
+}

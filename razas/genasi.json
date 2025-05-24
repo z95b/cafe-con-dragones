@@ -1,0 +1,39 @@
+{
+    "raceName": "Genasi",
+    "raceDescription": "Los Genasi son seres elementales, nacidos de la unión entre humanoides y poderes elementales. Cada tipo de Genasi refleja las características y habilidades del elemento al que están vinculados: Fuego, Tierra, Aire o Agua.",
+    "bonusRules": "+1 en Carisma y +2 en un atributo según el tipo de Genasi:\n- Fuego: +2 en Inteligencia\n- Tierra: +2 en Fuerza\n- Aire: +2 en Destreza\n- Agua: +2 en Sabiduría.",
+    "movementSpeed": "6",
+    "lifeSpan": "100-150",
+    "attributes": {
+        "Fuerza": "2¿",
+        "Destreza": "2¿",
+        "Inteligencia": "2¿",
+        "Sabiduría": "2¿",
+        "Carisma": "+1"
+    },
+    "sizes": [
+        3
+    ],
+    "abilities": [
+        {
+            "name": "El Arcanum Dentro de Mí",
+            "description": "Obtienes competencia en la habilidad Arcano."
+        },
+        {
+            "name": "Fuego (Tipo de Genasi)",
+            "description": "Resistencia al daño de Fuego. Conoces el truco 'Crear Llama' (escala con tu Aptitud Mágica). Puedes lanzar 'Manos Ardientes' como acción 1 vez por descanso corto (añades 1d6 por cada 4 niveles)."
+        },
+        {
+            "name": "Tierra (Tipo de Genasi)",
+            "description": "El terreno difícil de tierra o roca no te ralentiza. Puedes usar 'Pasar sin Rastro' como acción una vez por descanso corto."
+        },
+        {
+            "name": "Aire (Tipo de Genasi)",
+            "description": "Puedes aguantar la respiración de forma indefinida si estás consciente. Puedes lanzar 'Levitar' como acción una vez por descanso corto."
+        },
+        {
+            "name": "Agua (Tipo de Genasi)",
+            "description": "Puedes respirar bajo el agua. Eres resistente al daño de ácido. El agua no dificulta tu movimiento. Puedes moldear, redirigir o congelar el agua visible (no grandes cantidades) como acción ilimitada. A nivel 3 puedes lanzar 'Crear/Destruir Agua' como acción una vez por descanso corto."
+        }
+    ]
+}

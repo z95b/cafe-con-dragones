@@ -1,0 +1,25 @@
+{
+    "raceName": "Ursoi",
+    "raceDescription": "Los Ursoi viven en los bosques llevando una vida tranquila centrada en comer, descansar y ocasionalmente procrear. Sin embargo, si se les da motivos para tomar un arma, no dudarán en lanzarse al campo de batalla. Se dice que cuanto más tiempo peleas contra un Ursoi, más parece resistir los golpes.",
+    "bonusRules": "+4 en Fuerza, -2 en pruebas de Destreza.",
+    "movementSpeed": "5",
+    "lifeSpan": "80-120",
+    "attributes": {
+        "Fuerza": "+4",
+        "Destreza": "-2"
+    },
+    "sizes": [
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Resistencia a la Adversidad",
+            "description": "Cada golpe que des genera puntos de golpe temporales equivalentes a tu Modificador de Fuerza. Estos puntos no se acumulan ni solapan. Puede activarse 1 vez por turno y dura 2 turnos."
+        },
+        {
+            "name": "Rugido",
+            "description": "Emites un rugido en un área de 5 casillas alrededor. Elige uno de los efectos:\n- +2 de CA para todos los aliados dentro del área y para ti (hasta el inicio de tu próximo turno).\n- Asustas a los enemigos dentro del área (Salvación de Carisma: DC = 8 + Mod. Fuerza + Mod. Competencia).\n- +1d4 en tiradas de ataque para todos tus aliados (hasta el inicio de tu próximo turno).\n- +2 casillas de movimiento base para todos tus aliados (dura 2 turnos).\nPuedes usar este rasgo tantas veces como tu Modificador de Fuerza."
+        }
+    ]
+}

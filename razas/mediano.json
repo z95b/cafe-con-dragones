@@ -1,0 +1,24 @@
+{
+    "raceName": "Medianos",
+    "raceDescription": "Suertudos y con grandes habilidades sociales, los Medianos no suelen meterse en conflictos ni buscan la guerra. Al contrario, les encanta la paz y la tranquilidad que esta les entrega a los pueblos. Aman charlar (mucho), disfrutar de una rica cena y fumar pipa.",
+    "bonusRules": "",
+    "movementSpeed": "5",
+    "lifeSpan": "150-250",
+    "attributes": {
+        "Destreza": "+1",
+        "Carisma": "+2"
+    },
+    "sizes": [
+        2
+    ],
+    "abilities": [
+        {
+            "name": "Suerte",
+            "description": "Si sacas un 1 en cualquier tipo de tirada, puedes volver a lanzar el dado (una vez por prueba). Puedes usar este rasgo tantas veces como tu modificador de Carisma (se recupera tras un descanso largo)."
+        },
+        {
+            "name": "Pequeña Valentía",
+            "description": "Tienes ventaja en tiradas de salvación que traten de asustarte. Además, si eres sorprendido puedes lanzar 1d20 + tu modificador de Carisma. Si consigues 11 o más, no serás sorprendido."
+        }
+    ]
+}

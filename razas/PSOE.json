@@ -1,0 +1,23 @@
+{
+    "raceName": "PSOE",
+    "raceDescription": "cLASE oBREera",
+    "bonusRules": "Perrito Sansex",
+    "movementSpeed": "1",
+    "attributes": {
+        "Fuerza": "-20",
+        "Destreza": "-20",
+        "Constitución": "-20",
+        "Inteligencia": "-20",
+        "Sabiduría": "-20",
+        "Carisma": "+10"
+    },
+    "sizes": [
+        "Enorme"
+    ],
+    "abilities": [
+        {
+            "name": "Perro págame la birra",
+            "description": "El bono cultural te invita al bar."
+        }
+    ]
+}

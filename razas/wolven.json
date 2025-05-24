@@ -1,0 +1,31 @@
+{
+    "raceName": "Wolven",
+    "raceDescription": "Los Wolven son una raza humanoide con rasgos lupinos, conocidos por su instinto de manada y sus habilidades sociales innatas. Poseen un agudo sentido del olfato que los hace expertos rastreadores y detectores de peligros. Su cultura se basa en la estructura de la manada, donde el liderazgo es una posición respetada y vinculada emocionalmente. Aunque físicamente imponentes, los Wolven son también criaturas reflexivas, capaces de mostrar una lealtad inquebrantable hacia quienes consideran parte de su familia. En combate, destacan por su capacidad de trabajar en equipo y aprovechar su conexión con la manada para obtener ventajas tácticas.",
+    "bonusRules": "",
+    "movementSpeed": "7",
+    "lifeSpan": "30-70",
+    "attributes": {
+        "Destreza": "+1",
+        "Constitución": "+2"
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Olfato de Leyenda",
+            "description": "El agudo sentido del olfato de los Wolven les otorga ventaja en pruebas de Perspicacia y Percepción relacionadas con olores. Pueden detectar rastros de miedo, identificar presencias cercanas o descubrir detalles ocultos en el ambiente a través de su nariz."
+        },
+        {
+            "name": "Camada",
+            "description": "Los Wolven forman fuertes lazos con su manada. Puedes designar a un aliado como Líder de la Manada o tomar tú mismo ese rol. Como acción adicional, el Líder puede ordenar a un aliado dentro de un rango de 10 casillas que realice una de las siguientes acciones: Esconderse, Atacar, Destrabarse o Moverse la mitad de su velocidad. La orden consume la reacción del aliado. Esta habilidad solo puede usarse si existe respeto mutuo dentro de la manada; si el Líder pierde su autoridad o la confianza de los miembros, esta habilidad no estará disponible."
+        }
+    ],
+    "culture": {
+        "familyStructure": "La sociedad Wolven gira en torno a la manada, una estructura social donde el respeto y la confianza mutua son fundamentales. El liderazgo se obtiene a través de actos de valentía y capacidad estratégica, y los vínculos entre los miembros son tan fuertes que traicionar a la manada es visto como la mayor ofensa.",
+        "appearance": "Los Wolven tienen rasgos físicos que recuerdan a los lobos: orejas puntiagudas, ojos penetrantes, pelajes de variados colores y colas robustas. Su tamaño puede variar desde pequeños y ágiles hasta grandes y poderosos, adaptándose a diferentes roles dentro de la manada.",
+        "behavior": "Enfrentan los desafíos con una mezcla de instinto y estrategia. Aunque valoran la libertad, sienten una necesidad intrínseca de formar vínculos estrechos con otros, ya sea con su propia especie o con aliados confiables de otras razas."
+    }
+}

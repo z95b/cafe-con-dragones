@@ -1,0 +1,26 @@
+{
+    "raceName": "Aasimar",
+    "raceDescription": "Los Aasimar son seres muy poco comunes. Son semi deidades enviadas por los dioses del cosmos para cumplir con su voluntad en la tierra. Estos usualmente esgrimen la justicia y la bondad como sus mayores armas, otorgando el perdón a quien lo pida y actuando con un gran sentido inquebrantable de la moral… Aunque siempre hay ovejas descarriadas.",
+    "bonusRules": "",
+    "movementSpeed": "6",
+    "lifeSpan": "200-300",
+    "attributes": {
+        "INT": "+1",
+        "Carisma": "+2"
+    },
+    "sizes": [
+        2,
+        3,
+        4
+    ],
+    "abilities": [
+        {
+            "name": "Infusión Celestial",
+            "description": "Eres resistente al daño Radiante o Necrótico (dependiendo de tu progenitor)."
+        },
+        {
+            "name": "Toque Sanador",
+            "description": "Como acción, puedes curar a una criatura de una enfermedad, veneno o curarle una cantidad de puntos de vida igual a tu nivel x 5. Se recupera tras un descanso corto."
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "raceName": "Kenkus",
+    "raceDescription": "Los Kenkus aprovechan su astucia e inteligencia para salir de las situaciones más enrevesadas que se les presenten. Dales tiempo y algunos recursos, y ten claro que un Kenku siempre irá un paso por delante de ti. Sin embargo, su tentación por tomar algo brillante puede jugarles en contra. Todo ave parlanchina es considerada un Kenku.",
+    "bonusRules": "",
+    "movementSpeed": "7",
+    "lifeSpan": "60-100",
+    "attributes": {
+        "Sabiduría": "+1",
+        "Carisma": "+2"
+    },
+    "sizes": [
+        2,
+        3
+    ],
+    "abilities": [
+        {
+            "name": "Mimetismo",
+            "description": "Puedes imitar cualquier voz con tan solo escucharla. Además, puedes copiar una caligrafía de manera exacta e indistinguible."
+        },
+        {
+            "name": "Grandes Interpretadores",
+            "description": "Eres competente en la habilidad Interpretación siempre y cuando el enfoque sea en imitar una voz."
+        }
+    ]
+}
